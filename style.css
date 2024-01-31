@@ -1,0 +1,166 @@
+@font-face {
+    font-family: 'alte_haas_groteskregular';
+    src: url('./fonts/altehaasgroteskregular-webfont.woff2') format('woff2'),
+         url('./fonts/altehaasgroteskregular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+    font-family: 'alte_haas_groteskregular';
+    background: radial-gradient(circle, hsla(239, 77%, 70%, 1) 0%, hsla(246, 46%, 37%, 1) 100%);
+    font-size: 3vh;
+}
+
+body {
+    display: grid;
+    grid-template-rows: 1fr 8fr;
+    margin: 0px;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    color: rgb(241, 135, 1);
+    text-shadow: 0.1rem 0.1rem black;
+    letter-spacing: 0.2rem;
+    text-align: center;
+}
+
+form {
+    padding: 2vw;
+    background-color: rgba(245, 222, 179, 0.507);
+    display: grid;
+    gap: 0.5vw;
+    border-radius: 25px;
+}
+
+.letterSelection {
+    display: grid;
+    gap: 0.5vw;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+form > div > div{
+    background-color: white;
+    text-align: center;
+}
+
+form > div .selected {
+    background-color: grey;
+}
+
+.typeSelection {
+    display: grid;
+    gap: 0.5vw;
+    grid-template-columns: max-content max-content;
+    justify-content: center;
+}
+
+.typeSelection > div {
+    padding: 0.5vw 1vw;
+}
+
+.gameSelection {
+    display: grid;
+    gap: 0.5vw;
+    grid-template-columns: repeat(5, 12vw);
+    justify-content: center;
+}
+
+.gameSelection > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form input {
+    font-size: 1.5svw;
+    font-family: 'alte_haas_groteskregular';
+}
+
+#qntPoints {
+    width: 5vw;
+}
+
+#letraGame {
+    padding: 0px 50px;
+    height: 75vh;
+    width: 50vw;
+    display: grid;
+    grid-template-columns: 40% 40%;
+    grid-template-rows: 20% 80%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.253);
+    border-radius: 60px;
+}
+
+.questionLetra {
+    grid-column: 1 / 4;
+    text-align: center;
+    font-size: 6vh;
+    font-weight: 900;
+}
+
+#points {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 5vh;
+    right: 10vh;
+    background-color: rgba(128, 128, 128, 0.5);
+    color: white;
+    border-radius: 3vh;
+    height: 5vh;
+    width: 20vh;
+}
+
+#letraGame > div > img {
+    height: 20vh;
+    width: 20vh;
+    margin-bottom: 3vh;
+}
+
+#letraGame > .help {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2.5vh;
+    font-size: 6vh;
+    font-weight: 900;
+}
+
+#letraGame > .buttons {
+    display: grid;
+    padding: 2.5vh;
+    gap:1vh;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
+}
+
+#letraGame > .buttons > div {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(63, 49, 192, 0.507);
+    height: 25vh;
+    width: 10vh;
+    justify-content: center;
+    align-items: center;
+    font-size: 6vh;
+    font-weight: 900;
+    border-radius: 10px;
+    border: solid 5px black;
+}
+
+#letraGame > .buttons > div:hover {
+    background-color: rgba(48, 37, 139, 0.925);
+}
+
+#letraGame > .buttons > .wrong{
+    background-color: rgba(255, 0, 0, 0.658);
+}
+
