@@ -6,6 +6,7 @@ const gameSelection = document.querySelector('.gameSelection');
 const startButton = document.querySelector('#start');
 const qntPoints = document.querySelector('#qntPoints');
 
+
 const makeWords = (function () {
     let wordBank = [];
 
@@ -127,7 +128,7 @@ const makeWords = (function () {
     addWord("ESTEIRA",["ES","TEI","RA"],"./images/esteira.png");
     addWord("ESTILETE",["ES","TI","LE","TE"],"./images/estilete.png");
     addWord("ESTILINGUE",["ES","TI","LIN","GUE"],"./images/estilingue.png");
-    addWord("ESTIQUETA",["E","TI","QUE","TA"],"./images/etiqueta.png");
+    addWord("ETIQUETA",["E","TI","QUE","TA"],"./images/etiqueta.png");
     addWord("ESTOJO",["ES","TO","JO"],"./images/estojo.png");
     addWord("ESTRELA",["ES","TRE","LA"],"./images/estrela.png");
     addWord("ENVELOPE",["EN","VE","LO","PE"],"./images/envelope.png");
@@ -205,8 +206,6 @@ const makeWords = (function () {
     addWord("USINA",["U","SI","NA"],"./images/usina.png");
     addWord("URNA",["UR","NA"],"./images/urna.png");
 
-
-
     return {getWords}
 })();
 
@@ -242,7 +241,9 @@ const makeForm = (function () {
         addButton("Maiúscula", typeSelection);
         addButton("Minúscula", typeSelection);
         addButton("Letra inicial", gameSelection);
+        addButton("Letra final", gameSelection);
         addButton("Sílaba inicial", gameSelection);
+        addButton("Sílaba final", gameSelection);
         addButton("Juntar sílabas", gameSelection);
         addButton("Desembaralhar letras", gameSelection);
         addButton("Forca", gameSelection);
@@ -306,8 +307,6 @@ const gameController = () => {
 
     let thisGame = "";
 
-    let totalPoints = 0;
-
     const selectWords = (value) => {
         for (let i = 0; i < usedLetters.length ; i++) {
             if (value.word.charAt(0) === usedLetters[i]) {
@@ -316,9 +315,18 @@ const gameController = () => {
         } 
         return false;
     }
+    
+    const selectFinalWords = (value) => {
+        for (let i = 0; i < usedLetters.length ; i++) {
+            if (value.word.charAt(value.word.length - 1) === usedLetters[i]) {
+                return true;
+            }
+        } 
+        return false;
+    }
 
     let usableWords = allWords.filter(selectWords);
-
+    let usableFinalWords = allWords.filter(selectFinalWords);
 
     const transformText = (text) => {
         if (letterType.length == "2") {
@@ -329,6 +337,105 @@ const gameController = () => {
             return [text.toLowerCase()];
         }
     };
+
+    const WordHistory = [];
+    let correctTotal = 0;
+    let wrongTotal = 0;
+
+    const addWordHistory = (word, value, answer, game) => {
+        WordHistory.push([word, value, answer, game]);
+    }
+
+    const makeAreaGame = (function () {
+        main.textContent = "";
+        const Game = document.createElement('div');
+        Game.id = "Game";
+        main.appendChild(Game);
+    })();
+
+    const history =(function () {
+        const history = document.createElement('div');
+        history.id = "history";
+
+        const correct = document.createElement('div');
+        correct.textContent = correctTotal + " Corretos";
+        correct.id = "correctTotal";
+
+        const wrong = document.createElement('div');
+        wrong.textContent = wrongTotal + " Errados";
+        wrong.id = "wrongTotal";
+
+        const showhistory = document.createElement('div');
+        showhistory.textContent = "";
+        showhistory.id = "History";
+
+        const showHistory = () => {
+            if (showhistory.textContent == ""){
+                for (let i = 0; i < WordHistory.length ; i++) {
+                    const word = document.createElement('div');
+                    word.textContent = WordHistory[i][0].word;
+                    word.className = WordHistory[i][1];
+                    const answer = document.createElement('div');
+                    if (WordHistory[i][1] == "wrong") {
+                        answer.textContent = WordHistory[i][2];
+                    }
+                    answer.className = WordHistory[i][1];
+                    const game = document.createElement('div');
+                    game.textContent = WordHistory[i][3];
+                    game.className = WordHistory[i][1];
+                    showhistory.appendChild(word);
+                    showhistory.appendChild(answer);
+                    showhistory.appendChild(game);
+                }
+            } else {
+                hideHistory();
+            }   
+        }
+
+        const hideHistory = () => {
+            while (showhistory.firstChild) {
+                showhistory.removeChild(showhistory.firstChild);
+            }
+        }
+
+        showhistory.addEventListener('click', function(event) {
+            hideHistory();
+        })
+        
+
+        wrong.addEventListener('click', function(event) {
+            showHistory();
+        })
+
+        correct.addEventListener('click', function(event) {
+            showHistory();
+        })
+        
+        history.appendChild(correct);
+        history.appendChild(wrong);
+        history.appendChild(showhistory);
+
+        document.body.appendChild(history);
+
+        const updateScore = () => {
+            correct.textContent = correctTotal + " Corretos";
+            wrong.textContent = wrongTotal + " Errados";
+             if (showhistory.firstChild){
+                hideHistory();
+                showHistory();
+             }                    
+        }
+        return {updateScore}
+    })();
+
+    const updateTotal = (value) => {
+        if (value == "correct") {
+            correctTotal += 1;
+        } else {
+            wrongTotal += 1;
+        }
+        history.updateScore();
+    }
 
     const choseGame = () => {
         if (gameCounter === +changeGamesAt) {
@@ -345,23 +452,84 @@ const gameController = () => {
 
     }
 
-    const givePoints = () => {
-        totalPoints +=1;
+    const makeDisplay = (Question, imgSrc, tipText) => {
+        const question = document.createElement('div');
+        const imgNWord = document.createElement('div');
+
+        imgNWord.className = "help";
+        question.className = "question";
+        
+
+        const questionText = transformText(Question);
+
+        for (let i = 0; i < questionText.length;  i++){
+            const questionTEXT = document.createElement('div');
+            questionTEXT.textContent = questionText[i];
+            question.appendChild(questionTEXT);
+        }
+        Game.appendChild(question);
+
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        imgNWord.appendChild(img);
+
+        const wordHelp = transformText(tipText);
+    
+        for (let i = 0; i < wordHelp.length;  i++){
+            const tip = document.createElement('div');
+            tip.textContent = wordHelp[i];
+            imgNWord.appendChild(tip);
+        }
+
+        Game.appendChild(imgNWord);
+
+    }
+
+    const endGame = () =>{
+        const finalMessage = document.createElement('div');
+        finalText = transformText("FIM DE JOGO");
+
+        for (let i = 0; i < finalText.length;  i++){
+            const finalLine = document.createElement('div');
+            finalLine.textContent = finalText[i];
+            finalMessage.appendChild(finalLine);
+        }
+
+        finalMessage.id = "endGame";
+        document.body.appendChild(finalMessage);
+        main.textContent = "";
     }
 
     const playRound = () => {
+        const Game = document.querySelector('#Game');
         thisGame = choseGame();
-        main.textContent = "";
+        Game.textContent = "";
 
         switch (thisGame) {
             case "Letra inicial": {
-                makeLetra();
+                if (usableWords.length > 0) {
+                    makeLetra();
+                } else {
+                    endGame();
+                }
+                break;
+            }
+            case "Letra final": {
+                if (usableFinalWords.length > 0) {
+                    makeLetraFinal();
+                } else {
+                    endGame();
+                }
                 break;
             }
             case "Sílaba inicial": {
 
                 break;
-            } 
+            }
+            case "Sílaba final": {
+
+                break;
+            }
             case "Juntar sílabas": {
 
                 break;
@@ -377,53 +545,30 @@ const gameController = () => {
         }
     }
 
-    const selectWord = () => {
+    const selectWordUsable = () => {
         return Math.floor(Math.random() * usableWords.length);
     }
 
-    const deleteWord = (word) => {
-        usableWords = usableWords.filter(value => value != word)
+    const selectWordFinal = () => {
+        return Math.floor(Math.random() * usableFinalWords.length);
     }
 
+    const deleteWord = (word) => {
+        usableWords = usableWords.filter(value => value != word);
+        usableFinalWords = usableFinalWords.filter(value => value != word);
+    }
 
     const makeLetra = () => {
-        const word = usableWords[selectWord()];
+        const word = usableWords[selectWordUsable()];
         const letter = word.word.slice(0, 1);
-    
-        const letraGame = document.createElement('div')
-        const question = document.createElement('div')
-        const imgNWord = document.createElement('div')
-        const options = document.createElement('div')
-        const points = document.createElement('div')
+        
+        makeDisplay("QUAL É A LETRA INICIAL?", word.img, "__" + word.word.slice(1));
 
-        imgNWord.className = "help"
-        options.className = "buttons"
-        question.className = "questionLetra";
-        letraGame.id = "letraGame";
+        const game = document.querySelector('#Game');
 
-        const questionText = transformText("QUAL É A LETRA INICIAL?")
-
-        for (let i = 0; i < questionText.length;  i++){
-            const questionTEXT = document.createElement('div');
-            questionTEXT.textContent = questionText[i];
-            question.appendChild(questionTEXT);
-        }
-        letraGame.appendChild(question);
-
-
-        const img = document.createElement('img')
-        img.src = word.img
-        imgNWord.appendChild(img)
-
-        const pieceWord = transformText("__" + word.word.slice(1));
-    
-        for (let i = 0; i < pieceWord.length;  i++){
-            const tip = document.createElement('div');
-            tip.textContent = pieceWord[i];
-            imgNWord.appendChild(tip);
-        }
-        letraGame.appendChild(imgNWord);
-
+        const options = document.createElement('div');
+        options.className = "buttons";
+        
         let consonants = ["B","C","D","F","G","H","J","K","L","M","N","P","Q","R","S","T","V","W","X","Y","Z"];
 
         const removeConsonant = (letter) => {
@@ -436,10 +581,11 @@ const gameController = () => {
             return letter;
         }
 
+        let firstTest = true
 
         let createButton = (letter, boolean) => {
-            const button = document.createElement('div')
-            const buttonText = transformText(letter)
+            const button = document.createElement('div');
+            const buttonText = transformText(letter);
             for (let i = 0; i < buttonText.length;  i++){
                 const value = document.createElement('div');
                 value.textContent = buttonText[i];
@@ -447,12 +593,20 @@ const gameController = () => {
             }
             if (boolean == true) {
                 button.addEventListener('click', function(event) {
-                    givePoints();
+                    if (firstTest == true) {
+                        addWordHistory(word,"correct",letter, "Letra Inicial");
+                        updateTotal("correct");
+                    }
                     deleteWord(word);
                     playRound();
                 })
             } else {
                 button.addEventListener('click', function(event) {
+                    if (firstTest == true) {
+                        addWordHistory(word,"wrong",letter, "Letra Inicial");
+                        firstTest = false;
+                        updateTotal("wrong");
+                    }
                     button.className = "wrong";
                 })
             }
@@ -466,7 +620,7 @@ const gameController = () => {
             createButton("O", letter == "O");
             createButton("U", letter == "U");
         } else {
-            let buttonsValue = []
+            let buttonsValue = [];
             buttonsValue.push(letter);
             removeConsonant(letter);
             buttonsValue.push(getConsonant());
@@ -480,18 +634,89 @@ const gameController = () => {
             createButton(buttonsValue[3], letter == buttonsValue[3]);
             createButton(buttonsValue[4], letter == buttonsValue[4]);
         }
-        letraGame.appendChild(options)
 
-        const pontos = document.createElement('div');
-        pontos.textContent = totalPoints + " PONTOS";
-        points.appendChild(pontos);
-
-        points.id = "points";
-        letraGame.appendChild(points);
-
-        main.appendChild(letraGame);
-
+        game.appendChild(options);
     }
 
-    playRound();
+    const makeLetraFinal = () => {
+        const word = usableFinalWords[selectWordFinal()];
+        const letter = word.word.slice(-1);
+        
+        makeDisplay("QUAL É A LETRA FINAL?", word.img,word.word.slice(0, -1) + "__");
+
+        const game = document.querySelector('#Game');
+
+        const options = document.createElement('div');
+        options.className = "buttons";
+        
+        let consonants = ["B","C","D","F","G","H","J","K","L","M","N","P","Q","R","S","T","V","W","X","Y","Z"];
+
+        const removeConsonant = (letter) => {
+            consonants = consonants.filter(value => value != letter);
+        }
+
+        const getConsonant = () => {
+            let letter = consonants[Math.floor(Math.random() * consonants.length + 1)];
+            removeConsonant(letter);
+            return letter;
+        }
+
+        let firstTest = true
+
+        let createButton = (letter, boolean) => {
+            const button = document.createElement('div');
+            const buttonText = transformText(letter);
+            for (let i = 0; i < buttonText.length;  i++){
+                const value = document.createElement('div');
+                value.textContent = buttonText[i];
+                button.appendChild(value);
+            }
+            if (boolean == true) {
+                button.addEventListener('click', function(event) {
+                    if (firstTest == true) {
+                        addWordHistory(word,"correct",letter, "Letra Final");
+                        updateTotal("correct");
+                    }
+                    deleteWord(word);
+                    playRound();
+                })
+            } else {
+                button.addEventListener('click', function(event) {
+                    if (firstTest == true) {
+                        addWordHistory(word,"wrong",letter, "Letra Final");
+                        firstTest = false;
+                        updateTotal("wrong");
+                    }
+                    button.className = "wrong";
+                })
+            }
+            options.appendChild(button);
+        }
+
+        if (letter == "A" || letter == "E" || letter == "I" || letter == "O" || letter == "U" ) {
+            createButton("A", letter == "A");
+            createButton("E", letter == "E");
+            createButton("I", letter == "I");
+            createButton("O", letter == "O");
+            createButton("U", letter == "U");
+        } else {
+            let buttonsValue = [];
+            buttonsValue.push(letter);
+            removeConsonant(letter);
+            buttonsValue.push(getConsonant());
+            buttonsValue.push(getConsonant());
+            buttonsValue.push(getConsonant());
+            buttonsValue.push(getConsonant());
+            buttonsValue = buttonsValue.sort();
+            createButton(buttonsValue[0], letter == buttonsValue[0]);
+            createButton(buttonsValue[1], letter == buttonsValue[1]);
+            createButton(buttonsValue[2], letter == buttonsValue[2]);
+            createButton(buttonsValue[3], letter == buttonsValue[3]);
+            createButton(buttonsValue[4], letter == buttonsValue[4]);
+        }
+
+        game.appendChild(options);
+    }
+
+    playRound(); 
 }
