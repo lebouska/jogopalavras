@@ -3,6 +3,7 @@ const formPlace = document.querySelector('form');
 const letterSelection = document.querySelector('.letterSelection');
 const typeSelection = document.querySelector('.typeSelection');
 const gameSelection = document.querySelector('.gameSelection');
+const removeSelection = document.querySelector('.removeSelection');
 const startButton = document.querySelector('#start');
 const qntPoints = document.querySelector('#qntPoints');
 
@@ -47,7 +48,7 @@ const makeWords = (function () {
     addWord("ARMÁRIO",["AR","MÁ","RIO"],"./images/armario.png");
     addWord("ASA",["A","SA"],"./images/asa.png");
     addWord("ABACATE",["A","BA","CA","TE"],"./images/abacate.png");
-    addWord("APONTADOR",["A","PONT","TA","DOR"],"./images/apontador.png");
+    addWord("APONTADOR",["A","PON","TA","DOR"],"./images/apontador.png");
     addWord("ABRAÇO", ["A","BRA","ÇO"],"./images/abraco.png");
     addWord("ABRIDOR", ["A","BRI","DOR"],"./images/abridor.png");
     addWord("AZEITE",["A","ZEI","TE"],"./images/azeite.png");
@@ -247,6 +248,13 @@ const makeForm = (function () {
         addButton("Juntar sílabas", gameSelection);
         addButton("Desembaralhar letras", gameSelection);
         addButton("Forca", gameSelection);
+        addButton("Ditado", gameSelection);
+        addButton("Consoante + H", removeSelection);
+        addButton("Consoante + L", removeSelection);
+        addButton("Consoante + R", removeSelection);
+        addButton("SS", removeSelection);
+        addButton("Ç", removeSelection);
+        addButton("Acentuação", removeSelection);
     })();
 
     const makeInfo = () => {
@@ -281,6 +289,13 @@ const makeForm = (function () {
             info[3] = qntPoints.value;
         }
         
+        const remove = [];
+        removeSelection.childNodes.forEach((element) => {
+            if (element.className == "selected") {
+                remove.push(element.textContent);
+            }
+        })
+        info[4] = remove;
 
         if (info[0].length !== 0 && info[1].length !== 0 && info[2].length !== 0) {
             gameController();
@@ -301,6 +316,54 @@ const gameController = () => {
     const letterType = info[1];
     const usedGames = info[2];
     const changeGamesAt = info[3];
+    const wordsToRemove = info[4];
+
+    const removeWords = (function () {
+        const removeConsH = (value) => {
+            return value.word.indexOf("CH") == -1 && value.word.indexOf("NH") == -1 && value.word.indexOf("LH") == -1;
+        }
+
+        const removeConsL = (value) => {
+            return value.word.indexOf("BL") == -1 && value.word.indexOf("CL") == -1 && value.word.indexOf("FL") == -1 && 
+                value.word.indexOf("GL") == -1 && value.word.indexOf("PL") == -1 && value.word.indexOf("TL") == -1;
+        }
+
+        const removeConsR = (value) => {
+            return value.word.indexOf("BR") == -1 && value.word.indexOf("CR") == -1 && value.word.indexOf("DR") == -1 && 
+                value.word.indexOf("FR") == -1 && value.word.indexOf("GR") == -1 && value.word.indexOf("PR") == -1 &&
+                value.word.indexOf("TR") == -1 && value.word.indexOf("VR") == -1;
+        }
+
+        const removeSS = (value) => {
+            return value.word.indexOf("SS") == -1;
+        }
+
+        const removeC = (value) => {
+            return value.word.indexOf("Ç") == -1;
+        }
+        const removeAccents = (value) => {
+            return value.word.indexOf("Ã") == -1 && value.word.indexOf("Õ") == -1 && value.word.indexOf("Â") == -1 &&
+                value.word.indexOf("Ê") == -1 && value.word.indexOf("Î") == -1 && value.word.indexOf("Á") == -1 &&
+                value.word.indexOf("É") == -1 && value.word.indexOf("Í") == -1 && value.word.indexOf("Ó") == -1 &&
+                value.word.indexOf("Ú") == -1;
+        }
+
+        for (let i = 0; i < wordsToRemove.length; i++) {
+            if (wordsToRemove[i] == "Consoante + H") {
+                allWords = allWords.filter(removeConsH);
+            } else if (wordsToRemove[i] == "Consoante + L") {
+                allWords = allWords.filter(removeConsL);
+            } else if (wordsToRemove[i] == "Consoante + R") {
+                allWords = allWords.filter(removeConsR);
+            } else if (wordsToRemove[i] == "SS") {
+                allWords = allWords.filter(removeSS);
+            } else if (wordsToRemove[i] == "Ç") {
+                allWords = allWords.filter(removeC);
+            } else if (wordsToRemove[i] == "Acentuação") {
+                allWords = allWords.filter(removeAccents);
+            }
+        }
+    })();
 
     let gameArray = usedGames;
     let gameCounter = 1;
@@ -325,8 +388,36 @@ const gameController = () => {
         return false;
     }
 
+    const selectSyllable = (value) => {
+        if (value.syllables.length > 1) {
+            for (let i = 0; i < usedLetters.length ; i++) {
+                if (value.syllables[0].charAt(0) === usedLetters[i]) {
+                    if (value.syllables[0].length > 1) {
+                        return true;
+                    }
+                }
+            } 
+        }
+        return false;
+    }
+
+    const selectSyllableFinal = (value) => {
+        if (value.syllables.length > 1) {
+            for (let i = 0; i < usedLetters.length ; i++) {
+                if (value.syllables[value.syllables.length - 1].charAt(0) === usedLetters[i]) {
+                    if (value.syllables[value.syllables.length - 1].length > 1) {
+                        return true;
+                    }
+                }
+            } 
+        }
+        return false;
+    }
+
     let usableWords = allWords.filter(selectWords);
     let usableFinalWords = allWords.filter(selectFinalWords);
+    let usableSyllable = allWords.filter(selectSyllable);
+    let usableFinalSyllable = allWords.filter(selectSyllableFinal);
 
     const transformText = (text) => {
         if (letterType.length == "2") {
@@ -447,9 +538,7 @@ const gameController = () => {
         } else {
             gameCounter += 1;
             return gameArray[0];
-
         }
-
     }
 
     const makeDisplay = (Question, imgSrc, tipText) => {
@@ -523,11 +612,19 @@ const gameController = () => {
                 break;
             }
             case "Sílaba inicial": {
-
+                if (usableSyllable.length > 0) {
+                    makeSilaba();
+                } else {
+                    endGame();
+                }
                 break;
             }
             case "Sílaba final": {
-
+                if (usableFinalSyllable.length > 0) {
+                    makeSilabaFinal();
+                } else {
+                    endGame();
+                }
                 break;
             }
             case "Juntar sílabas": {
@@ -542,6 +639,10 @@ const gameController = () => {
 
                 break;
             }
+            case "Ditado": {
+
+                break;
+            }
         }
     }
 
@@ -553,9 +654,19 @@ const gameController = () => {
         return Math.floor(Math.random() * usableFinalWords.length);
     }
 
+    const selectWordSyllable = () => {
+        return Math.floor(Math.random() * usableSyllable.length);
+    }
+
+    const selectWordSyllableFinal = () => {
+        return Math.floor(Math.random() * usableFinalSyllable.length);
+    }
+
     const deleteWord = (word) => {
         usableWords = usableWords.filter(value => value != word);
         usableFinalWords = usableFinalWords.filter(value => value != word);
+        usableSyllable = usableSyllable.filter(value => value != word);
+        usableFinalSyllable = usableFinalSyllable.filter(value => value != word);
     }
 
     const makeLetra = () => {
@@ -718,5 +829,198 @@ const gameController = () => {
         game.appendChild(options);
     }
 
+    const makeSilaba = () => {
+        const word = usableSyllable[selectWordSyllable()];
+        const syllable = word.syllables[0];
+        
+        const makeRestWord = () => {
+            let restWord = "";
+            for (i = 1; i < word.syllables.length; i++) {
+                restWord = restWord + word.syllables[i];
+            }
+            return restWord;
+        }
+
+        makeDisplay("QUAL É A SÍLABA INICIAL?", word.img, "__" + makeRestWord());
+
+        const game = document.querySelector('#Game');
+
+        const options = document.createElement('div');
+        options.className = "buttons";
+        
+        let firstTest = true
+
+        let createButton = (syllable, boolean) => {
+            const button = document.createElement('div');
+            const buttonText = transformText(syllable);
+            for (let i = 0; i < buttonText.length;  i++){
+                const value = document.createElement('div');
+                value.textContent = buttonText[i];
+                button.appendChild(value);
+            }
+            if (boolean == true) {
+                button.addEventListener('click', function(event) {
+                    if (firstTest == true) {
+                        addWordHistory(word,"correct",syllable, "Sílaba Inicial");
+                        updateTotal("correct");
+                    }
+                    deleteWord(word);
+                    playRound();
+                })
+            } else {
+                button.addEventListener('click', function(event) {
+                    if (firstTest == true) {
+                        addWordHistory(word,"wrong",syllable, "Sílaba Inicial");
+                        firstTest = false;
+                        updateTotal("wrong");
+                    }
+                    button.className = "wrong";
+                })
+            }
+            options.appendChild(button);
+        }
+
+        let changeSyllable = (initialValue, FinalValue) => {
+            return syllable.replace(initialValue,FinalValue);
+        }
+
+        if (syllable.includes("QU") || (syllable.includes("GU") && syllable.indexOf("A") !== -1 && syllable.indexOf("E") !== -1
+            && syllable.indexOf("I") !== -1 && syllable.indexOf("O") !== -1)) {
+                createButton(changeSyllable(/[AEIO]/, "A"), syllable == changeSyllable(/[AEIO]/, "A"));
+                createButton(changeSyllable(/[AEIO]/, "E"), syllable == changeSyllable(/[AEIO]/, "E"));
+                createButton(changeSyllable(/[AEIO]/, "I"), syllable == changeSyllable(/[AEIO]/, "I"));
+                createButton(changeSyllable(/[AEIO]/, "O"), syllable == changeSyllable(/[AEIO]/, "O"));
+                createButton(changeSyllable(/[AEIO]/, ""), syllable == changeSyllable(/[AEIO]/, ""));
+        } else if (syllable.includes("Ã")) {
+            createButton(syllable, true);
+            createButton(changeSyllable(/Ã/, "E"), false);
+            createButton(changeSyllable(/Ã/, "I"), false);
+            createButton(changeSyllable(/Ã/, "Õ"), false);
+            createButton(changeSyllable(/Ã/, "U"), false);
+        } else if (syllable.includes("Â") || syllable.includes("Ê") || syllable.includes("Ô")) {
+            createButton(changeSyllable(/[ÂÊÎ]/, "Â"), syllable == changeSyllable(/[ÂÊÎ]/, "Â"));
+            createButton(changeSyllable(/[ÂÊÎ]/, "Ê"), syllable == changeSyllable(/[ÂÊÎ]/, "Ê"));
+            createButton(changeSyllable(/[ÂÊÎ]/, "Î"), false);
+            createButton(changeSyllable(/[ÂÊÎ]/, "Ô"), syllable == changeSyllable(/[ÂÊÎ]/, "Ô"));
+            createButton(changeSyllable(/[ÂÊÎ]/, "Û"), false);
+        } else if (syllable.includes("Á") || syllable.includes("É") || syllable.includes("Í") || 
+            syllable.includes("Ó") || syllable.includes("Ú")) {
+            createButton(changeSyllable(/[ÁÉÍÓÚ]/, "Á"), syllable == changeSyllable(/[ÁÉÍÓÚ]/, "Á"));
+            createButton(changeSyllable(/[ÁÉÍÓÚ]/, "É"), syllable == changeSyllable(/[ÁÉÍÓÚ]/, "É"));
+            createButton(changeSyllable(/[ÁÉÍÓÚ]/, "Í"), syllable == changeSyllable(/[ÁÉÍÓÚ]/, "Í"));
+            createButton(changeSyllable(/[ÁÉÍÓÚ]/, "Ó"), syllable == changeSyllable(/[ÁÉÍÓÚ]/, "Ó"));
+            createButton(changeSyllable(/[ÁÉÍÓÚ]/, "Ú"), syllable == changeSyllable(/[ÁÉÍÓÚ]/, "Ú"));
+        } else {
+            createButton(changeSyllable(/[AEIOU]/, "A"), syllable == changeSyllable(/[AEIOU]/, "A"));
+            createButton(changeSyllable(/[AEIOU]/, "E"), syllable == changeSyllable(/[AEIOU]/, "E"));
+            createButton(changeSyllable(/[AEIOU]/, "I"), syllable == changeSyllable(/[AEIOU]/, "I"));
+            createButton(changeSyllable(/[AEIOU]/, "O"), syllable == changeSyllable(/[AEIOU]/, "O"));
+            createButton(changeSyllable(/[AEIOU]/, "U"), syllable == changeSyllable(/[AEIOU]/, "U"));
+        }
+        game.appendChild(options);
+    }
+
+    const makeSilabaFinal = () => {
+        const word = usableFinalSyllable[selectWordSyllableFinal()];
+        const syllable = word.syllables[word.syllables.length - 1];
+        
+        const makeRestWord = () => {
+            let restWord = "";
+            for (i = 0; i < word.syllables.length - 1; i++) {
+                restWord = restWord + word.syllables[i];
+            }
+            return restWord;
+        }
+
+        makeDisplay("QUAL É A SÍLABA FINAL?", word.img,makeRestWord() + "__");
+
+        const game = document.querySelector('#Game');
+
+        const options = document.createElement('div');
+        options.className = "buttons";
+        
+        let firstTest = true
+
+        let createButton = (syllable, boolean) => {
+            const button = document.createElement('div');
+            const buttonText = transformText(syllable);
+            for (let i = 0; i < buttonText.length;  i++){
+                const value = document.createElement('div');
+                value.textContent = buttonText[i];
+                button.appendChild(value);
+            }
+            if (boolean == true) {
+                button.addEventListener('click', function(event) {
+                    if (firstTest == true) {
+                        addWordHistory(word,"correct",syllable, "Sílaba Final");
+                        updateTotal("correct");
+                    }
+                    deleteWord(word);
+                    playRound();
+                })
+            } else {
+                button.addEventListener('click', function(event) {
+                    if (firstTest == true) {
+                        addWordHistory(word,"wrong",syllable, "Sílaba Final");
+                        firstTest = false;
+                        updateTotal("wrong");
+                    }
+                    button.className = "wrong";
+                })
+            }
+            options.appendChild(button);
+        }
+
+        let changeSyllable = (initialValue, FinalValue) => {
+            return syllable.replace(initialValue,FinalValue);
+        }
+
+        if (syllable.includes("ÃO")) {
+            createButton(changeSyllable(/ÃO/, "A"), false);
+            createButton(changeSyllable(/ÃO/, "E"), false);
+            createButton(changeSyllable(/ÃO/, "I"), false);
+            createButton(changeSyllable(/ÃO/, "O"), false);
+            createButton(changeSyllable(/ÃO/, "U"), false);
+            createButton(syllable, true);
+        } else if (syllable.includes("QU") || (syllable.includes("GU") && syllable.indexOf("A") !== -1 && syllable.indexOf("E") !== -1
+            && syllable.indexOf("I") !== -1 && syllable.indexOf("O") !== -1)) {
+                createButton(changeSyllable(/[AEIO]/, "A"), syllable == changeSyllable(/[AEIO]/, "A"));
+                createButton(changeSyllable(/[AEIO]/, "E"), syllable == changeSyllable(/[AEIO]/, "E"));
+                createButton(changeSyllable(/[AEIO]/, "I"), syllable == changeSyllable(/[AEIO]/, "I"));
+                createButton(changeSyllable(/[AEIO]/, "O"), syllable == changeSyllable(/[AEIO]/, "O"));
+                createButton(changeSyllable(/[AEIO]/, ""), syllable == changeSyllable(/[AEIO]/, ""));
+                createButton(changeSyllable(/[AEIO]/, "ÃO"), syllable == changeSyllable(/[AEIO]/, "ÃO"));
+        } else if (syllable.includes("Ã")) {
+            createButton(syllable, true);
+            createButton(changeSyllable(/Ã/, "E"), false);
+            createButton(changeSyllable(/Ã/, "I"), false);
+            createButton(changeSyllable(/Ã/, "Õ"), false);
+            createButton(changeSyllable(/Ã/, "U"), false);
+            createButton(changeSyllable(/Ã/, "ÃO"), false);
+        } else if (syllable.includes("Â") || syllable.includes("Ê") || syllable.includes("Ô")) {
+            createButton(changeSyllable(/[ÂÊÎ]/, "Â"), syllable == changeSyllable(/[ÂÊÎ]/, "Â"));
+            createButton(changeSyllable(/[ÂÊÎ]/, "Ê"), syllable == changeSyllable(/[ÂÊÎ]/, "Ê"));
+            createButton(changeSyllable(/[ÂÊÎ]/, "Î"), false);
+            createButton(changeSyllable(/[ÂÊÎ]/, "Ô"), syllable == changeSyllable(/[ÂÊÎ]/, "Ô"));
+            createButton(changeSyllable(/[ÂÊÎ]/, "Û"), false);
+            createButton(changeSyllable(/[ÂÊÎ]/, "ÃO"), false);
+        } else if (syllable.includes("Á") || syllable.includes("É") || syllable.includes("Í") || 
+            syllable.includes("Ó") || syllable.includes("Ú")) {
+            createButton(changeSyllable(/[ÁÉÍÓÚ]/, "Á"), syllable == changeSyllable(/[ÁÉÍÓÚ]/, "Á"));
+            createButton(changeSyllable(/[ÁÉÍÓÚ]/, "É"), syllable == changeSyllable(/[ÁÉÍÓÚ]/, "É"));
+            createButton(changeSyllable(/[ÁÉÍÓÚ]/, "Í"), syllable == changeSyllable(/[ÁÉÍÓÚ]/, "Í"));
+            createButton(changeSyllable(/[ÁÉÍÓÚ]/, "Ó"), syllable == changeSyllable(/[ÁÉÍÓÚ]/, "Ó"));
+            createButton(changeSyllable(/[ÁÉÍÓÚ]/, "Ú"), syllable == changeSyllable(/[ÁÉÍÓÚ]/, "Ú"));
+            createButton(changeSyllable(/[ÁÉÍÓÚ]/, "ÃO"), false);
+        } else {
+            createButton(changeSyllable(/[AEIOU]/, "A"), syllable == changeSyllable(/[AEIOU]/, "A"));
+            createButton(changeSyllable(/[AEIOU]/, "E"), syllable == changeSyllable(/[AEIOU]/, "E"));
+            createButton(changeSyllable(/[AEIOU]/, "I"), syllable == changeSyllable(/[AEIOU]/, "I"));
+            createButton(changeSyllable(/[AEIOU]/, "O"), syllable == changeSyllable(/[AEIOU]/, "O"));
+            createButton(changeSyllable(/[AEIOU]/, "U"), syllable == changeSyllable(/[AEIOU]/, "U"));
+            createButton([...new Set(changeSyllable(/[AEIOU]/gi, "ÃO"))].join(""), false);
+        }
+        game.appendChild(options);
+    }
     playRound(); 
 }

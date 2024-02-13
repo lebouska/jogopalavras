@@ -29,7 +29,7 @@ h1 {
 }
 
 form {
-    padding: 2vw;
+    padding: 1vw;
     background-color: rgba(245, 222, 179, 0.507);
     display: grid;
     gap: 0.5vw;
@@ -66,14 +66,22 @@ form > div .selected {
     display: grid;
     gap: 0.5vw;
     grid-template-columns: repeat(4, 12vw);
-    grid-template-rows: 4vw 4vw;
+    grid-template-rows: 3.5vw 3.5vw;
     justify-content: center;
 }
 
-.gameSelection > div {
+.gameSelection > div, .removeSelection > div {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.removeSelection{
+    display: grid;
+    gap: 0.5vw;
+    grid-template-columns: repeat(3, 16vw);
+    grid-template-rows: 2vw 2vw;
+    justify-content: center;
 }
 
 form input {
@@ -88,9 +96,9 @@ form input {
 #Game {
     padding: 0px 50px;
     height: 75vh;
-    width: 60vw;
+    width: 80vw;
     display: grid;
-    grid-template-columns: 50% 40%;
+    grid-template-columns: 45% 55%;
     grid-template-rows: 20% 80%;
     justify-content: center;
     align-items: center;
@@ -181,7 +189,7 @@ form input {
     flex-direction: column;
     background-color: rgba(63, 49, 192, 0.507);
     height: 25vh;
-    width: 10vh;
+    width: 20vh;
     justify-content: center;
     align-items: center;
     font-size: 6vh;
