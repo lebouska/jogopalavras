@@ -113,6 +113,38 @@ form input {
     font-weight: 900;
 }
 
+.ditado {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    gap: 3vh;
+}
+
+.ditado > input {
+    text-align: center;
+    font-size: 6vh;
+    height: 10vh;
+    width: 75vh;
+    background-color: rgba(255, 255, 255, 0.50);
+    border-radius: 50px;
+    border: solid 0.5vh hsla(246, 46%, 37%, 1);
+}
+
+.ditado > .wrong {
+    background-color: rgba(243, 64, 64, 0.5);
+    border: solid 0.5vh rgba(105, 11, 11, 0.692);
+}
+
+.ditado > button {
+    text-align: center;
+    font-size: 6vh;
+    height: 10vh;
+    width: 30vh;
+    border-radius: 50px;
+    align-self: center;
+}
+
 #history {
     position: absolute;
     top: 5vh;
@@ -150,7 +182,7 @@ form input {
 
 #History > .wrong{
     padding: 5px;
-    background-color: rgb(99, 7, 7);
+    background-color: rgb(160, 61, 61);
     font-size: 1vw;
 }
 
@@ -175,6 +207,20 @@ form input {
     font-size: 6vh;
     font-weight: 900;
 }
+
+.help > div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    gap: 4vh;
+}
+
+.help > div > img{
+    height: 7vh;
+    width: auto;
+}
+
 
 #Game > .buttons {
     display: grid;
