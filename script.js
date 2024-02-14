@@ -60,7 +60,7 @@ const makeWords = (function () {
     addWord("AGENDA",["A","GEN","DA"],"./images/agenda.png","./audio/agenda.mp3");
     addWord("ÁGUIA",["Á","GUI","A"],"./images/aguia.png","./audio/aguia.mp3");
     addWord("ÁLBUM",["ÁL","BUM"],"./images/album.png","./audio/album.mp3");
-    addWord("ALÇA",["AL","ÇA"],"./images/alca.png","./audio/aca.mp3");
+    addWord("ALÇA",["AL","ÇA"],"./images/alca.png","./audio/alca.mp3");
     addWord("ALFABETO",["AL","FA","BE","TO"],"./images/alfabeto.png","./audio/alfabeto.mp3");
     addWord("ALFACE",["AL","FA","CE"],"./images/alface.png","./audio/alface.mp3");
     addWord("ALGEMA",["AL","GE","MA"],"./images/algema.png","./audio/algema.mp3");
@@ -68,7 +68,7 @@ const makeWords = (function () {
     addWord("ALMOÇO",["AL","MO","ÇO"],"./images/almoco.png","./audio/almoco.mp3");
     addWord("ALMOFADA",["AL","MO","FA","DA"],"./images/almofada.png","./audio/almofada.mp3");
     addWord("AMARELO",["A","MA","RE","LO"],"./images/amarelo.png","./audio/amarelo.mp3");
-    addWord("AMBULÂNCIA",["AM","BU","LÂN","CI","A"],"./images/ambulancia.png","./audio/abmbulancia.mp3");
+    addWord("AMBULÂNCIA",["AM","BU","LÂN","CI","A"],"./images/ambulancia.png","./audio/ambulancia.mp3");
     addWord("AMENDOIM",["A","MEN","DO","IM"],"./images/amendoim.png","./audio/amendoim.mp3");
     addWord("AMPULHETA",["AM","PU","LHE","TA"],"./images/ampulheta.png","./audio/ampulheta.mp3");
     addWord("ÂNCORA",["ÂN","CO","RA"],"./images/ancora.png","./audio/ancora.mp3");
@@ -424,11 +424,21 @@ const gameController = () => {
         return false;
     }
 
+    const selectForca = (value) => {
+        for (let i = 0; i < usedLetters.length ; i++) {
+            if (value.word.charAt(0) === usedLetters[i]) {
+                return true;
+            }
+        } 
+        return false;
+    }
+
     let usableWords = allWords.filter(selectWords);
     let usableFinalWords = allWords.filter(selectFinalWords);
     let usableSyllable = allWords.filter(selectSyllable);
     let usableFinalSyllable = allWords.filter(selectSyllableFinal);
     let usableDitado = allWords.filter(selectDitado);
+    let usableForca = allWords.filter(selectForca);
 
     const transformText = (text) => {
         if (letterType.length == "2") {
@@ -575,7 +585,7 @@ const gameController = () => {
         const audioNText = document.createElement('div');
 
         const audioImg = document.createElement('img');
-        audioImg.src = "./images/playAudio.png"
+        audioImg.src = "./systemimages/playAudio.png"
         const audioHelp = new Audio(audioSrc);
         audioImg.addEventListener('click', function(event) {
             audioHelp.play();
@@ -620,7 +630,7 @@ const gameController = () => {
         const audioNText = document.createElement('div');
 
         const audioImg = document.createElement('img');
-        audioImg.src = "./images/playAudio.png"
+        audioImg.src = "./systemimages/playAudio.png"
         const audioHelp = new Audio(audioSrc);
         audioImg.addEventListener('click', function(event) {
             audioHelp.play();
@@ -694,7 +704,11 @@ const gameController = () => {
                 break;
             }
             case "Forca": {
-
+                if (usableForca.length > 0) {
+                    makeForca();
+                } else {
+                    endGame();
+                }
                 break;
             }
             case "Ditado": {
@@ -729,12 +743,17 @@ const gameController = () => {
         return Math.floor(Math.random() * usableDitado.length);
     }
 
+    const selectWordForca = () => {
+        return Math.floor(Math.random() * usableForca.length);
+    }
+
     const deleteWord = (word) => {
         usableWords = usableWords.filter(value => value != word);
         usableFinalWords = usableFinalWords.filter(value => value != word);
         usableSyllable = usableSyllable.filter(value => value != word);
         usableFinalSyllable = usableFinalSyllable.filter(value => value != word);
         usableDitado = usableDitado.filter(value => value != word);
+        usableForca = usableForca.filter(value => value != word);
     }
 
     const makeLetra = () => {
@@ -1109,7 +1128,12 @@ const gameController = () => {
         answer.appendChild(input);
 
         const button = document.createElement('button');
-        button.textContent = "ENVIAR";
+        let textArray = transformText("ENVIAR");
+        let textString = textArray[0];
+        if (textArray.length > 1) {
+            textString = textString + "\r\n" + textArray[1];
+        }
+        button.innerText = textString
         button.addEventListener('click', function(event) {
             testAnswer();
         })
@@ -1134,6 +1158,230 @@ const gameController = () => {
         }
 
         game.appendChild(answer);
+    }
+
+    const makeForca = () => {
+        const word = usableForca[selectWordForca()];
+        const wordTextForca = transformText(word.word);
+        const imgHang = ["./systemimages/0.png","./systemimages/1.png","./systemimages/2.png",
+            "./systemimages/3.png", "./systemimages/4.png", "./systemimages/5.png",
+            "./systemimages/6.png"]
+        let lettersUsed = ["-"]
+
+        let stage = 0
+        const updateStage = () => {
+            stage += 1
+        }
+
+        const MakeDisplayForca = (function () {
+            const question = document.createElement('div');
+            const hangmanGame = document.createElement('div');
+
+            hangmanGame.className = "Forca";
+            question.className = "question";
+            
+            const questionText = transformText("Forca");
+    
+            for (let i = 0; i < questionText.length;  i++){
+                const questionTEXT = document.createElement('div');
+                questionTEXT.textContent = questionText[i];
+                question.appendChild(questionTEXT);
+            }
+
+            Game.appendChild(question);
+
+            const img = document.createElement('img');
+            img.src = word.img;
+            hangmanGame.appendChild(img);
+
+            const hangmanImg = document.createElement('img');
+            hangmanImg.src = imgHang[0];
+            hangmanGame.appendChild(hangmanImg);
+
+            const updateHangmanImg = () => {
+                hangmanImg.src= imgHang[stage]
+            }
+            
+            const audioNText = document.createElement('div');
+    
+            const audioImg = document.createElement('img');
+            audioImg.src = "./systemimages/playAudio.png"
+            const audioHelp = new Audio(word.audio);
+            audioImg.addEventListener('click', function(event) {
+                audioHelp.play();
+            })
+            audioNText.appendChild(audioImg);
+
+            const wordText = document.createElement('div');
+
+            const makeHangmanText = () => {
+                wordText.textContent = "";
+                for (let i = 0; i < wordTextForca.length;  i++){
+                    const textGroup = document.createElement('div');
+                    textGroup.className = "ditadoWord"
+                    const wordPiecesText = wordTextForca[i].split("");
+                    for (let j = 0; j < wordPiecesText.length; j++){
+                        const letterSpace = document.createElement('div');
+                        for (let k = 0; k < lettersUsed.length; k++){
+                            if (lettersUsed[k] == "A") {
+                                if (wordPiecesText[j].toUpperCase() == "A" || wordPiecesText[j].toUpperCase() == "Á" || wordPiecesText[j].toUpperCase() == "Â" ||
+                                    wordPiecesText[j].toUpperCase() == "Ã"){
+                                        letterSpace.textContent = wordPiecesText[j];
+                                }
+                            } else if (lettersUsed[k] == "E") {
+                                if (wordPiecesText[j].toUpperCase() == "E" || wordPiecesText[j].toUpperCase() == "É" || wordPiecesText[j].toUpperCase() == "Ê"){
+                                    letterSpace.textContent = wordPiecesText[j];
+                                }
+                            } else if (lettersUsed[k] == "I") {
+                                if (wordPiecesText[j].toUpperCase() == "I" || wordPiecesText[j].toUpperCase() == "Í" ){
+                                    letterSpace.textContent = wordPiecesText[j];
+                                }
+                            } else if (lettersUsed[k] == "O") {
+                                if (wordPiecesText[j].toUpperCase() == "O" || wordPiecesText[j].toUpperCase() == "Ó" || wordPiecesText[j].toUpperCase() == "Ô" || 
+                                    wordPiecesText[j].toUpperCase() == "Õ"){
+                                        letterSpace.textContent = wordPiecesText[j];
+                                }
+                            } else if (lettersUsed[k] == "U") {
+                                if (wordPiecesText[j].toUpperCase() == "U" || wordPiecesText[j].toUpperCase() == "Ú"){
+                                    letterSpace.textContent = wordPiecesText[j];
+                                }
+                            } else if (lettersUsed[k] == "C") {
+                                if (wordPiecesText[j].toUpperCase() == "C" || wordPiecesText[j].toUpperCase() == "Ç"){
+                                    letterSpace.textContent = wordPiecesText[j];
+                                }
+                            }  else if (wordPiecesText[j].toUpperCase() == lettersUsed[k]){
+                                letterSpace.textContent = wordPiecesText[j];
+                            }
+                        }
+                        textGroup.appendChild(letterSpace);
+                    }
+                    wordText.appendChild(textGroup);
+                }
+            }
+
+            const getAnswer = () => {
+                const fullWord = [];
+                wordText.firstChild.childNodes.forEach((element) => {
+                    if (element.textContent) {
+                        fullWord.push(element.textContent);
+                    }
+                })
+                let answer = fullWord.join("");
+                return answer;
+            }
+            
+            makeHangmanText();
+            audioNText.appendChild(wordText);
+            hangmanGame.appendChild(audioNText);
+            Game.appendChild(hangmanGame)
+            return {updateHangmanImg, makeHangmanText, getAnswer};
+        })(); 
+
+        const game = document.querySelector('#Game');
+
+        const buttons = document.createElement('div');
+        buttons.className = "buttonsDitado";
+        
+        const makeNextScreenButton = () => {
+            buttons.textContent = "";
+            buttons.classList.remove("buttonsDitado");
+            buttons.className = "nextButton" ;
+            const button = document.createElement('button');
+            button.addEventListener('click', function(event) {
+                deleteWord(word);
+                playRound();
+            })
+            const textArray = transformText("PRÓXIMO");
+            let textString = textArray[0];
+            if (textArray.length > 1) {
+                textString = textString + "\r\n" + textArray[1];
+            }
+            button.innerText = textString
+            buttons.appendChild(button);
+        }
+                
+        for (let i = 65; i < 91; i++) {
+            const button = document.createElement('div');
+            const textArray = transformText(String.fromCharCode(i));
+            let textString = textArray[0];
+            if (textArray.length > 1) {
+                textString = textString + "\r\n" + textArray[1];
+            }
+            button.textContent = textString;
+            let firstTime = "Yes"
+
+            const testLetter = (letter) => {
+                for (let i = 0; i < word.word.length; i++) {
+                    if (letter == "A") {
+                        if (word.word[i] == "A" || word.word[i] == "Á" || word.word[i] == "Â" || word.word[i] == "Ã"){
+                            button.className = "DitadoCorrect";
+                        } else if ( i == word.word.length -1 && button.className != "DitadoCorrect"){
+                            button.className = "DitadoWrong";
+                        }
+                    } else if (letter == "E") {
+                        if (word.word[i] == "E" || word.word[i] == "É" || word.word[i] == "Ê"){
+                            button.className = "DitadoCorrect";
+                        } else if ( i == word.word.length -1 && button.className != "DitadoCorrect"){
+                            button.className = "DitadoWrong";
+                        }
+                    } else if (letter == "I") {
+                        if (word.word[i] == "I" || word.word[i] == "Í" ){
+                            button.className = "DitadoCorrect";
+                        } else if ( i == word.word.length -1 && button.className != "DitadoCorrect"){
+                            button.className = "DitadoWrong";
+                        }
+                    } else if (letter == "O") {
+                        if (word.word[i] == "O" || word.word[i] == "Ó" || word.word[i] == "Ô" || word.word[i] == "Õ"){
+                            button.className = "DitadoCorrect";
+                        } else if ( i == word.word.length -1 && button.className != "DitadoCorrect"){
+                            button.className = "DitadoWrong";
+                        }
+                    } else if (letter == "U") {
+                        if (word.word[i] == "U" || word.word[i] == "Ú"){
+                            button.className = "DitadoCorrect";
+                        } else if ( i == word.word.length -1 && button.className != "DitadoCorrect"){
+                            button.className = "DitadoWrong";
+                        }
+                    } else if (letter == "C") {
+                        if (word.word[i] == "C" || word.word[i] == "Ç"){
+                            button.className = "DitadoCorrect";
+                        } else if ( i == word.word.length -1 && button.className != "DitadoCorrect"){
+                            button.className = "DitadoWrong";
+                        }
+                    }  else if (word.word[i] == letter){
+                        button.className = "DitadoCorrect";
+                    }  else if (i == word.word.length - 1 && button.className != "DitadoCorrect") {
+                        button.className = "DitadoWrong";
+                        updateStage();
+                    }
+                }
+            }
+
+            button.addEventListener('click', function(event) {
+                if (firstTime == "Yes") {
+                    firstTime = "No"
+                    testLetter(String.fromCharCode(i));
+                    lettersUsed.push(String.fromCharCode(i));
+                    MakeDisplayForca.updateHangmanImg();
+                    MakeDisplayForca.makeHangmanText();
+                    if (stage == 6 || MakeDisplayForca.getAnswer() == word.word) {
+                        makeNextScreenButton();
+                        deleteWord(word);
+                        if (MakeDisplayForca.getAnswer() == word.word) {
+                            addWordHistory(word,"correct",word, "Forca");
+                            updateTotal("correct");
+
+                        } else {
+                            addWordHistory(word,"wrong", MakeDisplayForca.getAnswer(), "Sílaba Final");
+                            updateTotal("wrong");
+                        }
+                    }
+                }
+            })
+            buttons.appendChild(button);
+        }
+
+        game.appendChild(buttons);
     }
 
     playRound(); 
