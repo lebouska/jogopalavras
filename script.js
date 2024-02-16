@@ -194,7 +194,7 @@ const makeWords = (function () {
     addWord("OSTRA",["OS","TRA"],"./images/ostra.png","./audio/ostra.mp3");
     addWord("OSSO",["OS","SO"],"./images/osso.png","./audio/osso.mp3");
     
-    addWord("UVA",["U","VA"],"./images/uva.png","./audio/u.mp3");
+    addWord("UVA",["U","VA"],"./images/uva.png","./audio/uva.mp3");
     addWord("URSO",["UR","SO"],"./images/urso.png","./audio/urso.mp3");
     addWord("UM",["UM"],"./images/um.png","./audio/um.mp3");
     addWord("UMBIGO",["UM","BI","GO"],"./images/umbigo.png","./audio/umbigo.mp3");
@@ -207,6 +207,94 @@ const makeWords = (function () {
     addWord("UNIVERSO",["U","NI","VER","SO"],"./images/universo.png","./audio/universo.mp3");
     addWord("USINA",["U","SI","NA"],"./images/usina.png","./audio/usina.mp3");
     addWord("URNA",["UR","NA"],"./images/urna.png","./audio/urna.mp3");
+
+    //addWord("BABADOR",["BA","BA","DOR"],"./images/babador.png","./audio/babador.mp3");
+    //addWord("BACIA",["BA","CI","A"],"./images/bacia.png","./audio/bacia.mp3");
+    //addWord("BAGUETE",["BA","GUE","TE"],"./images/baguete.png","./audio/baguete.mp3");
+    //addWord("BAIANA",["BAI","A","NA"],"./images/baiana.png","./audio/baiana.mp3");
+    //addWord("BAILE",["BAI","LE"],"./images/baile.png","./audio/baile.mp3");
+    //addWord("BANHEIRO",["BA","NHEI","RO"],"./images/banheiro.png","./audio/banheiro.mp3");
+    //addWord("BALA",["BA","LA"],"./images/bala.png","./audio/bala.mp3");
+    //addWord("BALANÇA",["BA","LAN","ÇA"],"./images/balanca.png","./audio/balanca.mp3");
+    //addWord("BALANÇO",["BA","LAN","ÇO"],"./images/balanco.png","./audio/balanco.mp3");
+    //addWord("BALÃO",["BA","LÃO"],"./images/balao.png","./audio/balao.mp3");
+    //addWord("BALCÃO",["BAL","CÃO"],"./images/balcao.png","./audio/balcao.mp3");
+    //addWord("BALDE",["BAL","DE"],"./images/balde.png","./audio/balde.mp3");
+    //addWord("BALÉ",["BA","LÉ"],"./images/bale.png","./audio/bale.mp3");
+    //addWord("BAMBI",["BAM","BI"],"./images/bambi.png","./audio/bambi.mp3");
+    //addWord("BAMBOLÊ",["BAM","BO","LÊ"],"./images/bambole.png","./audio/bambole.mp3");
+    //addWord("BAMBU",["BAM","BU"],"./images/bambu.png","./audio/bambu.mp3");
+    //addWord("BANANA",["BA","NA","NA"],"./images/banana.png","./audio/banana.mp3");
+    //addWord("BANANEIRA",["BA","NA","NEI","RA"],"./images/bananeira.png","./audio/bananeira.mp3");
+    //addWord("BANCA",["BAN","CA"],"./images/banca.png","./audio/banca.mp3");
+    //addWord("BANCO",["BAN","CO"],"./images/banco.png","./audio/banco.mp3");
+    //addWord("BANDEIRA",["BAN","DEI","RA"],"./images/bandeira.png","./audio/bandeira.mp3");
+    //addWord("BARBA",["BAR","BA"],"./images/barba.png","./audio/barba.mp3");
+    //addWord("BARBANTE",["BAR","BAN","TE"],"./images/barbante.png","./audio/barbante.mp3");
+    //addWord("BARBEADOR",["BAR","BE","A","DOR"],"./images/barbeador.png","./audio/barbeador.mp3");
+    //addWord("BARCO",["BAR","CO"],"./images/barco.png","./audio/barco.mp3");
+    //addWord("BARRIGA",["BAR","RI","GA"],"./images/barriga.png","./audio/barriga.mp3");
+    //addWord("BARRIL",["BAR","RIL"],"./images/barril.png","./audio/barril.mp3");
+    //addWord("BASQUETE",["BAS","QUE","TE"],"./images/basquete.png","./audio/basquete.mp3");
+    //addWord("BATATA",["BA","TA","TA"],"./images/batata.png","./audio/batata.mp3");
+    //addWord("BATERIA",["BA","TE","RI","A"],"./images/bateria.png","./audio/bateria.mp3");
+    //addWord("BATOM",["BA","TOM"],"./images/batom.png","./audio/batom.mp3");
+    //addWord("BAÚ",["BA","Ú"],"./images/bau.png","./audio/bau.mp3");
+    //addWord("BEBÊ",["BE","BÊ"],"./images/bebe.png","./audio/bebe.mp3");
+    //addWord("BEBEDOURO",["BE","BE","DOU","RO"],"./images/bebedouro.png","./audio/bebedouro.mp3");
+    //addWord("BEIJA-FLOR",["BEI","JA","-","FLOR"],"./images/beija-flor.png","./audio/beija-flor.mp3");
+    //addWord("BEIJO",["BEI","JA"],"./images/beija.png","./audio/beija.mp3");
+    //addWord("BEISEBOL",["BEI","SE","BOL"],"./images/beisebol.png","./audio/beisebol.mp3");
+    //addWord("BELICHE",["BE","LI","CHE"],"./images/beliche.png","./audio/beliche.mp3");
+    //addWord("BELISCÃO",["BE","LIS","CÃO"],"./images/beliscao.png","./audio/beliscao.mp3");
+    //addWord("BENGALA",["BEN","GA","LA"],"./images/bengala.png","./audio/bengala.mp3");
+    //addWord("BERÇO",["BER","ÇO"],"./images/berco.png","./audio/berco.mp3");
+    //addWord("BERINJELA",["BE","RIN","JE","LA"],"./images/berinjela.png","./audio/berinjela.mp3");
+    //addWord("BERMUDA",["BER","MU","DA"],"./images/bermuda.png","./audio/bermuda.mp3");
+    //addWord("BESOURO",["BE","SOU","RO"],"./images/besouro.png","./audio/besouro.mp3");
+    //addWord("BETERRABA",["BE","TER","RA","BA"],"./images/beterraba.png","./audio/beterraba.mp3");
+    //addWord("BEZERRO",["BE","ZER","RO"],"./images/bezerro.png","./audio/bezerro.mp3");
+    //addWord("BIBLIOTECA",["BI","BLI","O","TE","CA"],"./images/biblioteca.png","./audio/biblioteca.mp3");
+    //addWord("BICICLETA",["BI","CI","CLE","TA"],"./images/bicicleta.png","./audio/bicicleta.mp3");
+    //addWord("BICO",["BI","CO"],"./images/bico.png","./audio/bico.mp3");
+    //addWord("BIGODE",["BI","GO","DE"],"./images/bigode.png","./audio/bigode.mp3");
+    //addWord("BINGO",["BIN","GO"],"./images/bingo.png","./audio/bingo.mp3");
+    //addWord("BINÓCULO",["BI","NÓ","CU","LO"],"./images/binoculo.png","./audio/binoculo.mp3");
+    //addWord("BOCA",["BO","CA"],"./images/boca.png","./audio/boca.mp3");
+    //addWord("BODE",["BO","DE"],"./images/bode.png","./audio/bode.mp3");
+    //addWord("BOIA",["BO","IA"],"./images/boia.png","./audio/boia.mp3");
+    //addWord("BOINA",["BOI","NA"],"./images/boina.png","./audio/boina.mp3");
+    //addWord("BOLA",["BO","LA"],"./images/bola.png","./audio/bola.mp3");
+    //addWord("BOLHA",["BO","LHA"],"./images/bolha.png","./audio/bolha.mp3");
+    //addWord("BOLO",["BO","LO"],"./images/bolo.png","./audio/bolo.mp3");
+    //addWord("BOLSA",["BOL","SA"],"./images/bolsa.png","./audio/bolsa.mp3");
+    //addWord("BOMBA",["BOM","BA"],"./images/bomba.png","./audio/bomba.mp3");
+    //addWord("BOMBEIRO",["BOM","BEI","RO"],"./images/bombeiro.png","./audio/bombeiro.mp3");
+    //addWord("BOMBOM",["BOM","BOM"],"./images/bombom.png","./audio/bombom.mp3");
+    //addWord("BONÉ",["BO","NÉ"],"./images/bone.png","./audio/bone.mp3");
+    //addWord("BONECA",["BO","NE","CA"],"./images/boneca.png","./audio/boneca.mp3");
+    //addWord("BORBOLETA",["BOR","BO","LE","TA"],"./images/borboleta.png","./audio/borboleta.mp3");
+    //addWord("BORRACHA",["BOR","RA","CHA"],"./images/borracha.png","./audio/borracha.mp3");
+    //addWord("BOTA",["BO","TA"],"./images/bota.png","./audio/bota.mp3");
+    //addWord("BOTÃO",["BO","TÃO"],"./images/botao.png","./audio/botao.mp3");
+    //addWord("BOTIJÃO",["BO","TI","JÃO"],"./images/botijao.png","./audio/botijao.mp3");
+    //addWord("BOTO",["BO","TO"],"./images/boto.png","./audio/boto.mp3");
+    //addWord("BRAÇO",["BRA","ÇO"],"./images/braco.png","./audio/braco.mp3");
+    //addWord("BRANCO",["BRAN","CO"],"./images/branco.png","./audio/branco.mp3");
+    //addWord("BRASIL",["BRA","SIL"],"./images/brasil.png","./audio/brasil.mp3");
+    //addWord("BRIGADEIRO",["BRI","GA","DEI","RO"],"./images/brigadeiro.png","./audio/brigadeiro.mp3");
+    //addWord("BRÓCOLIS",["BRÓ","CO","LIS"],"./images/brocolis.png","./audio/brocolis.mp3");
+    //addWord("BRUXA",["BRU","XA"],"./images/bruxa.png","./audio/bruxa.mp3");
+    //addWord("BUEIRO",["BU","EI","RO"],"./images/bueiro.png","./audio/bueiro.mp3");
+    //addWord("BULE",["BU","LE"],"./images/bule.png","./audio/bule.mp3");
+    //addWord("BUQUÊ",["BU","QUÊ"],"./images/buquê.png","./audio/buquê.mp3");
+    //addWord("BURRO",["BUR","RO"],"./images/burro.png","./audio/burro.mp3");
+    //addWord("BUZINA",["BU","ZI","NA"],"./images/buzina.png","./audio/buzina.mp3");
+    
+
+
+
+
 
     return {getWords}
 })();
@@ -244,6 +332,8 @@ const makeForm = (function () {
         addButton("Minúscula", typeSelection);
         addButton("Letra inicial", gameSelection);
         addButton("Letra final", gameSelection);
+        addButton("Preencher vogais", gameSelection);
+        addButton("Preencher consoantes", gameSelection);
         addButton("Sílaba inicial", gameSelection);
         addButton("Sílaba final", gameSelection);
         addButton("Juntar sílabas", gameSelection);
@@ -439,6 +529,8 @@ const gameController = () => {
     let usableFinalSyllable = allWords.filter(selectSyllableFinal);
     let usableDitado = allWords.filter(selectDitado);
     let usableForca = allWords.filter(selectForca);
+    let usableVogais = allWords;
+    let usableConsoantes = allWords;
 
     const transformText = (text) => {
         if (letterType.length == "2") {
@@ -607,7 +699,7 @@ const gameController = () => {
 
     }
 
-    const makeDisplayDitado = (Question, imgSrc, audioSrc) => {
+    const makeDisplay2 = (Question, imgSrc, audioSrc) => {
         const question = document.createElement('div');
         const imgNAudio = document.createElement('div');
         
@@ -718,7 +810,22 @@ const gameController = () => {
                     endGame();
                 }
                 break;
-
+            }
+            case "Preencher vogais": {
+                if (usableVogais.length > 0) {
+                    makeVogais();
+                } else {
+                    endGame();
+                }
+                break;
+            }
+            case "Preencher consoantes": {
+                if (usableConsoantes.length > 0) {
+                    makeConsoantes();
+                } else {
+                    endGame();
+                }
+                break;
             }
         }
     }
@@ -747,6 +854,14 @@ const gameController = () => {
         return Math.floor(Math.random() * usableForca.length);
     }
 
+    const selectWordVogais = () => {
+        return Math.floor(Math.random() * usableVogais.length);
+    }
+
+    const selectWordConsoantes = () => {
+        return Math.floor(Math.random() * usableConsoantes.length);
+    }
+
     const deleteWord = (word) => {
         usableWords = usableWords.filter(value => value != word);
         usableFinalWords = usableFinalWords.filter(value => value != word);
@@ -754,6 +869,8 @@ const gameController = () => {
         usableFinalSyllable = usableFinalSyllable.filter(value => value != word);
         usableDitado = usableDitado.filter(value => value != word);
         usableForca = usableForca.filter(value => value != word);
+        usableVogais = usableVogais.filter(value => value != word);
+        usableConsoantes = usableForca.filter(value => value != word);
     }
 
     const makeLetra = () => {
@@ -1113,7 +1230,7 @@ const gameController = () => {
     const makeDitado = () => {
         const word = usableDitado[selectWordDitado()];
 
-        makeDisplayDitado("COMO SE ESCREVE?", word.img, word.audio);
+        makeDisplay2("COMO SE ESCREVE?", word.img, word.audio);
 
         const game = document.querySelector('#Game');
 
@@ -1317,36 +1434,42 @@ const gameController = () => {
                             button.className = "DitadoCorrect";
                         } else if ( i == word.word.length -1 && button.className != "DitadoCorrect"){
                             button.className = "DitadoWrong";
+                            updateStage();
                         }
                     } else if (letter == "E") {
                         if (word.word[i] == "E" || word.word[i] == "É" || word.word[i] == "Ê"){
                             button.className = "DitadoCorrect";
                         } else if ( i == word.word.length -1 && button.className != "DitadoCorrect"){
                             button.className = "DitadoWrong";
+                            updateStage();
                         }
                     } else if (letter == "I") {
                         if (word.word[i] == "I" || word.word[i] == "Í" ){
                             button.className = "DitadoCorrect";
                         } else if ( i == word.word.length -1 && button.className != "DitadoCorrect"){
                             button.className = "DitadoWrong";
+                            updateStage();
                         }
                     } else if (letter == "O") {
                         if (word.word[i] == "O" || word.word[i] == "Ó" || word.word[i] == "Ô" || word.word[i] == "Õ"){
                             button.className = "DitadoCorrect";
                         } else if ( i == word.word.length -1 && button.className != "DitadoCorrect"){
                             button.className = "DitadoWrong";
+                            updateStage();
                         }
                     } else if (letter == "U") {
                         if (word.word[i] == "U" || word.word[i] == "Ú"){
                             button.className = "DitadoCorrect";
                         } else if ( i == word.word.length -1 && button.className != "DitadoCorrect"){
                             button.className = "DitadoWrong";
+                            updateStage();
                         }
                     } else if (letter == "C") {
                         if (word.word[i] == "C" || word.word[i] == "Ç"){
                             button.className = "DitadoCorrect";
                         } else if ( i == word.word.length -1 && button.className != "DitadoCorrect"){
                             button.className = "DitadoWrong";
+                            updateStage();
                         }
                     }  else if (word.word[i] == letter){
                         button.className = "DitadoCorrect";
@@ -1382,6 +1505,196 @@ const gameController = () => {
         }
 
         game.appendChild(buttons);
+    }
+
+    const makeVogais = () => {
+        const word = usableVogais[selectWordVogais()];
+
+        makeDisplay2("PREENCHA COM AS VOGAIS", word.img, word.audio);
+
+        const game = document.querySelector('#Game');
+
+        const answer = document.createElement('div');
+        answer.className = "jogoPreencher";
+        
+        let firstTest = true
+
+        let wordAnswer = document.createElement('div');
+        
+        for (let i = 0; i < word.word.length; i++) {
+            if (word.word[i] == "A" || word.word[i] == "E" || word.word[i] == "I" || word.word[i] == "O" ||
+                word.word[i] == "U" || word.word[i] == "Ã" || word.word[i] == "Õ" || word.word[i] == "Á" || 
+                word.word[i] == "É" || word.word[i] == "Í" || word.word[i] == "Ó" || word.word[i] == "Ú" ||
+                word.word[i] == "Â" || word.word[i] == "Ê" || word.word[i] == "Ô") {
+                    let input = document.createElement('input');
+                    input.setAttribute("type", "text");
+                    input.setAttribute("spellcheck", "false");
+                    input.setAttribute("maxlength","1");
+                    wordAnswer.appendChild(input);
+            } else {
+                let letterText = transformText(word.word[i]);
+                let letterGroup = document.createElement('div');
+                for (j = 0; j < letterText.length; j++) {
+                    let letterSpace = document.createElement('div');
+                    letterSpace.textContent = letterText[j];
+                    letterGroup.appendChild(letterSpace);
+                }
+                wordAnswer.appendChild(letterGroup);
+            }
+        }
+        answer.appendChild(wordAnswer)
+
+        const button = document.createElement('button');
+        let textArray = transformText("ENVIAR");
+        let textString = textArray[0];
+        if (textArray.length > 1) {
+            textString = textString + "\r\n" + textArray[1];
+        }
+        button.innerText = textString
+        button.addEventListener('click', function(event) {
+            testAnswer();
+        })
+        answer.appendChild(button);
+
+        const testAnswer = () => {
+            const answerArray = [];
+            for (const child of wordAnswer.children) {
+                if (child.tagName == "INPUT") {
+                    answerArray.push(child.value.toUpperCase());
+                } else if (child.tagName == "DIV") {
+                    answerArray.push(child.firstChild.textContent);
+                }           
+            }
+            const answerGiven = answerArray.join("");
+
+            const markAnswer = () => {
+                let counter = 0
+                for (const child of wordAnswer.children) {
+                    if (child.tagName == "INPUT") {
+                        if (child.value.toUpperCase() == word.word[counter]) {
+                            child.className = "correctLetter"
+                        } else {
+                            child.className = "wrongLetter"
+                        }
+                    }
+                    counter += 1     
+                }
+            }
+
+            if (answerGiven == word.word) {
+                deleteWord(word);
+                if (firstTest == true) {
+                    addWordHistory(word, "correct", answerGiven, "P. Vogais");
+                    updateTotal("correct");
+                }
+                playRound();
+            } else {
+                if (firstTest == true) {
+                    addWordHistory(word, "wrong", answerGiven, "P. Vogais");
+                    updateTotal("wrong");
+                    firstTest = false;
+                }
+                markAnswer();
+            }
+            
+        }
+
+        game.appendChild(answer);
+    }
+
+    const makeConsoantes = () => {
+        const word = usableConsoantes[selectWordConsoantes()];
+
+        makeDisplay2("PREENCHA COM AS CONSOANTES", word.img, word.audio);
+
+        const game = document.querySelector('#Game');
+
+        const answer = document.createElement('div');
+        answer.className = "jogoPreencher";
+        
+        let firstTest = true
+
+        let wordAnswer = document.createElement('div');
+        
+        for (let i = 0; i < word.word.length; i++) {
+            if (word.word[i] !== "A" && word.word[i] !== "E" && word.word[i] !== "I" && word.word[i] !== "O" &&
+                word.word[i] !== "U" && word.word[i] !== "Ã" && word.word[i] !== "Õ" && word.word[i] !== "Á" && 
+                word.word[i] !== "É" && word.word[i] !== "Í" && word.word[i] !== "Ó" && word.word[i] !== "Ú" &&
+                word.word[i] !== "Â" && word.word[i] !== "Ê" && word.word[i] !== "Ô" && word.word[i] !== "-") {
+                    let input = document.createElement('input');
+                    input.setAttribute("type", "text");
+                    input.setAttribute("spellcheck", "false");
+                    input.setAttribute("maxlength","1");
+                    wordAnswer.appendChild(input);
+            } else {
+                let letterText = transformText(word.word[i]);
+                let letterGroup = document.createElement('div');
+                for (j = 0; j < letterText.length; j++) {
+                    let letterSpace = document.createElement('div');
+                    letterSpace.textContent = letterText[j];
+                    letterGroup.appendChild(letterSpace);
+                }
+                wordAnswer.appendChild(letterGroup);
+            }
+        }
+        answer.appendChild(wordAnswer)
+
+        const button = document.createElement('button');
+        let textArray = transformText("ENVIAR");
+        let textString = textArray[0];
+        if (textArray.length > 1) {
+            textString = textString + "\r\n" + textArray[1];
+        }
+        button.innerText = textString
+        button.addEventListener('click', function(event) {
+            testAnswer();
+        })
+        answer.appendChild(button);
+
+        const testAnswer = () => {
+            const answerArray = [];
+            for (const child of wordAnswer.children) {
+                if (child.tagName == "INPUT") {
+                    answerArray.push(child.value.toUpperCase());
+                } else if (child.tagName == "DIV") {
+                    answerArray.push(child.firstChild.textContent);
+                }           
+            }
+            const answerGiven = answerArray.join("");
+
+            const markAnswer = () => {
+                let counter = 0
+                for (const child of wordAnswer.children) {
+                    if (child.tagName == "INPUT") {
+                        if (child.value.toUpperCase() == word.word[counter]) {
+                            child.className = "correctLetter"
+                        } else {
+                            child.className = "wrongLetter"
+                        }
+                    }
+                    counter += 1     
+                }
+            }
+
+            if (answerGiven == word.word) {
+                deleteWord(word);
+                if (firstTest == true) {
+                    addWordHistory(word, "correct", answerGiven, "P. Consoantes");
+                    updateTotal("correct");
+                }
+                playRound();
+            } else {
+                if (firstTest == true) {
+                    addWordHistory(word, "wrong", answerGiven, "P. Consoantes");
+                    updateTotal("wrong");
+                    firstTest = false;
+                }
+                markAnswer();
+            }
+            
+        }
+
+        game.appendChild(answer);
     }
 
     playRound(); 

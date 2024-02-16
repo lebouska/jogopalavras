@@ -66,8 +66,9 @@ form > div .selected {
     display: grid;
     gap: 0.5vw;
     grid-template-columns: repeat(4, 12vw);
-    grid-template-rows: 3.5vw 3.5vw;
+    grid-template-rows: repeat(3, 3.5vh);
     justify-content: center;
+    font-size: 75%;
 }
 
 .gameSelection > div, .removeSelection > div {
@@ -129,6 +130,7 @@ form input {
     background-color: rgba(255, 255, 255, 0.50);
     border-radius: 50px;
     border: solid 0.5vh hsla(246, 46%, 37%, 1);
+    align-self: center;
 }
 
 .ditado > .wrong {
@@ -136,7 +138,7 @@ form input {
     border: solid 0.5vh rgba(105, 11, 11, 0.692);
 }
 
-.ditado > button {
+.ditado > button, .jogoPreencher > button {
     text-align: center;
     font-size: 6vh;
     padding: 2vh 4vh;
@@ -144,6 +146,14 @@ form input {
     width: auto;
     border-radius: 50px;
     align-self: center;
+}
+
+.jogoPreencher {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3vh;
 }
 
 .nextButton > button{
@@ -155,8 +165,51 @@ form input {
     border-radius: 50px;
 }
 
-.nextButton > button:hover, .ditado > button:hover {
+.nextButton > button:hover, .ditado > button:hover, .jogoPreencher > button:hover {
     background-color: rgb(170, 169, 169);
+}
+
+
+
+.jogoPreencher > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1vh;
+    height: 10vh;
+    width: 3vh;
+    font-size: 6vh;
+}
+
+.jogoPreencher > div > input {
+    height: 10vh;
+    width: 5vh;
+    font-size: 6vh;
+    background-color:  rgba(224, 223, 231, 0.986);
+    text-align: center;
+    align-self: center;
+    border: none;
+    margin: none;
+    border-radius: 1vh;
+}
+
+.jogoPreencher > div > input.wrongLetter {
+    background-color:  rgba(243, 64, 64, 0.5);
+}
+
+.jogoPreencher > div > input.correctLetter {
+    background-color:  rgba(0, 128, 0, 0.541);
+}
+
+.jogoPreencher > div > input:focus {
+    outline: none;
+}
+
+.jogoPreencher > div > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .nextButton {
