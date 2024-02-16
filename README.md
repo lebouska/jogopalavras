@@ -1,2 +1,2 @@
 # jogosilaba
-A game test to use inside the portuguese class.
+A game to use inside the portuguese class.
