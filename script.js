@@ -526,7 +526,7 @@ const makeForm = (function () {
         if (letter.className == "selected") {
             letter.classList.remove("selected")
         } else {
-            letter.className = "selected"
+            letter.className = "selected";
         }
     }
 
@@ -539,15 +539,35 @@ const makeForm = (function () {
         place.appendChild(button);
     }
 
+    let selectAll = true
     const selectAllLetters = () => {
         for (const child of letterSelection.children) {
-            changeColor(child);
+            if (selectAll == true) {
+                child.className = "selected";
+            } else {
+                child.classList.remove("selected")
+            }
+        }
+        if (selectAll == true) {
+            selectAll = false;
+        } else {
+            selectAll = true;
         }
     }
 
+    let removeAll = false
     const SelectAllremove = () => {
         for (const child of removeSelection.children) {
-            changeColor(child);
+            if (removeAll == true) {
+                child.className = "selected";
+            } else {
+                child.classList.remove("selected")
+            }
+        }
+        if (removeAll == true) {
+            removeAll = false;
+        } else {
+            removeAll = true;
         }
     }
     
