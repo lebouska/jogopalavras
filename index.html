@@ -29,13 +29,13 @@
     <h1>JOGO DAS PALAVRAS</h1>
     <div id="main">
         <form>
-            <div class="option" id="letters">Selecione as letras iniciais e/ou finais</div>
+            <div class="option" id="letters">Selecione as letras iniciais e/ou finais<span><input type="button" value="Selecionar todas" id="selectAll"></span></div>
             <div class="letterSelection"></div>
             <div class="option">Selecione o tipo de letra</div>
             <div class="typeSelection"></div>
             <div class="option">Selecione os jogos</div>
             <div class="gameSelection"></div>
-            <div class="option">Retirar palavras que contém</div>
+            <div class="option" id="remove">Retirar palavras que contém<span><input type="button" value="Selecionar todas" id="removeAll"></span></div>
             <div class="removeSelection"></div>
             <div class="option">Mudar o jogo depois de:</div>
             <input type="number" id="qntPoints" min="1" placeholder="1">
