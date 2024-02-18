@@ -408,7 +408,7 @@ const makeWords = (function () {
     addWord("DAMAS",["DA","MAS"],"./images/damas.png","./audio/damas.mp3");
     addWord("DATA",["DA","TA"],"./images/data.png","./audio/data.mp3");
     addWord("DARDO",["DAR","DO"],"./images/dardo.png","./audio/dardo.mp3");
-    addWord("DEDOS",["DE","DOS"],"./images/dedos.png","./audio/dedos.mp3");
+    addWord("DEDO",["DE","DO"],"./images/dedo.png","./audio/dedo.mp3");
     addWord("DEGRAU",["DE","GRAU"],"./images/degrau.png","./audio/degrau.mp3");
     addWord("DELEGADO",["DE","LE","GA","DO"],"./images/delegado.png","./audio/delegado.mp3");
     addWord("DENTADURA",["DEN","TA","DU","RA"],"./images/dentadura.png","./audio/dentadura.mp3");
@@ -447,11 +447,9 @@ const makeWords = (function () {
     addWord("DOUTOR",["DOU","TOR"],"./images/doutor.png","./audio/doutor.mp3");
     addWord("DOZE",["DO","ZE"],"./images/doze.png","./audio/doze.mp3");
     addWord("DRAGÃO",["DRA","GÃO"],"./images/dragao.png","./audio/dragao.mp3");
-    addWord("DUCHA",["DU","CHA"],"./images/ducha.png","./audio/ducha.mp3");
     addWord("DUENDE",["DU","EN","DE"],"./images/duende.png","./audio/duende.mp3");
     addWord("DUMBO",["DUM","BO"],"./images/dumbo.png","./audio/dumbo.mp3");
     addWord("DUNA",["DU","NA"],"./images/duna.png","./audio/duna.mp3");
-    addWord("DUREX",["DU","REX"],"./images/durex.png","./audio/durex.mp3");
 
     addWord("FACA",["FA","CA"],"./images/faca.png","./audio/faca.mp3");
     addWord("FAIXA",["FAI","XA"],"./images/faixa.png","./audio/faixa.mp3");
@@ -467,7 +465,6 @@ const makeWords = (function () {
     addWord("FECHADURA",["FE","CHA","DU","RA"],"./images/fechadura.png","./audio/fechadura.mp3");
     addWord("FEIJÃO",["FE","I","JÃO"],"./images/feijao.png","./audio/feijao.mp3");
     addWord("FEIRA",["FEI","RA"],"./images/feira.png","./audio/feira.mp3");
-    addWord("FEITICEIRA",["FEI","TI","CEI","RA"],"./images/.png","./audio/.mp3");
     addWord("FÊNIX",["FÊ","NIX"],"./images/fenix.png","./audio/fenix.mp3");
     addWord("FERRADURA",["FER","RA","DU","RA"],"./images/ferradura.png","./audio/ferradura.mp3");
     addWord("FERRAMENTAS",["FER","RA","MEN","TAS"],"./images/ferramentas.png","./audio/ferramentas.mp3");
