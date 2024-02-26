@@ -402,7 +402,7 @@ const makeWords = (function () {
     addWord("CUBO",["CU","BO"],"./images/cubo.png","./audio/cubo.mp3");
     addWord("CUPIDO",["CU","PI","DO"],"./images/cupido.png","./audio/cupido.mp3");
     addWord("CURUPIRA",["CU","RU","PI","RA"],"./images/curupira.png","./audio/curupira.mp3");
-/*
+
     addWord("DADO",["DA","DO"],"./images/dado.png","./audio/dado.mp3");
     addWord("DÁLMATA",["DÁL","MA","TA"],"./images/dalmata.png","./audio/dalmata.mp3");
     addWord("DAMAS",["DA","MAS"],"./images/damas.png","./audio/damas.mp3");
@@ -443,7 +443,7 @@ const makeWords = (function () {
     addWord("DOMINÓ",["DO","MI","NÓ"],"./images/domino.png","./audio/domino.mp3");
     addWord("DORA",["DO","RA"],"./images/dora.png","./audio/dora.mp3");
     addWord("DORMIR",["DOR","MIR"],"./images/dormir.png","./audio/dormir.mp3");
-    addWord("DOURADO",["DOU","RA","DO"],"./images/doura.png","./audio/dourado.mp3");
+    addWord("DOURADO",["DOU","RA","DO"],"./images/dourado.png","./audio/dourado.mp3");
     addWord("DOUTOR",["DOU","TOR"],"./images/doutor.png","./audio/doutor.mp3");
     addWord("DOZE",["DO","ZE"],"./images/doze.png","./audio/doze.mp3");
     addWord("DRAGÃO",["DRA","GÃO"],"./images/dragao.png","./audio/dragao.mp3");
@@ -503,12 +503,12 @@ const makeWords = (function () {
     addWord("FREIRA",["FREI","RA"],"./images/freira.png","./audio/freira.mp3");
     addWord("FRIGIDEIRA",["FRI","GI","DEI","RA"],"./images/frigideira.png","./audio/frigideira.mp3");
     addWord("FRUTAS",["FRU","TAS"],"./images/frutas.png","./audio/frutas.mp3");
-    addWord("FUMAÇA",["FU","MA","ÇA"],"./images/fumaça.png","./audio/fumaça.mp3");
+    addWord("FUMAÇA",["FU","MA","ÇA"],"./images/fumaca.png","./audio/fumaca.mp3");
     addWord("FUNIL",["FU","NIL"],"./images/funil.png","./audio/funil.mp3");
     addWord("FURADEIRA",["FU","RA","DEI","RA"],"./images/furadeira.png","./audio/furadeira.mp3");
     addWord("FURO",["FU","RO"],"./images/furo.png","./audio/furo.mp3");
     addWord("FUTEBOL",["FU","TE","BOL"],"./images/futebol.png","./audio/futebol.mp3");
-*/
+
     return {getWords}
 })();
 
