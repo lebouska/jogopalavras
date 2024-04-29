@@ -574,6 +574,7 @@ const makeWords = (function () {
     addWord("GOLEIRO",["GO","LEI","RO"],"./images/goleiro.png","./audio/goleiro.mp3");
     addWord("GOLFE",["GOL","FE"],"./images/golfe.png","./audio/golfe.mp3");
     addWord("GOLFINHO",["GOL","FI","NHO"],"./images/golfinho.png","./audio/golfinho.mp3");
+    addWord("GORILA",["GO","RI","LA"],"./images/gorila.png","./audio/gorila.mp3");
     addWord("GÔNDOLA",["GÔN","DO","LA"],"./images/gondola.png","./audio/gondola.mp3");
     addWord("GOSMA",["GOS","MA"],"./images/gosma.png","./audio/gosma.mp3");
     addWord("GOTA",["GO","TA"],"./images/gota.png","./audio/gota.mp3");
@@ -616,6 +617,7 @@ const makeWords = (function () {
     addWord("HORTA",["HOR","TA"],"./images/horta.png","./audio/horta.mp3");
     addWord("HORTELÃ",["HOR","TE","LÃ"],"./images/hortela.png","./audio/hortela.mp3");
     addWord("HOSPITAL",["HOSPITAL"],"./images/hospital.png","./audio/hospital.mp3");
+    addWord("HUMANO",["HU","MA","NO"],"./images/humano.png","./audio/humano.mp3");
     
     addWord("JABUTI",["JA","BU","TI"],"./images/jabuti.png","./audio/jabuti.mp3");
     addWord("JABUTICABA",["JA","BU","TI","CA","BA"],"./images/jabuticaba.png","./audio/jabuticaba.mp3");
@@ -632,7 +634,7 @@ const makeWords = (function () {
     addWord("JAULA",["JAU","LA"],"./images/jaula.png","./audio/jaula.mp3");
     addWord("JAVALI",["JA","VA","LI"],"./images/javali.png","./audio/javali.mp3");
     addWord("JEGUE",["JE","GUE"],"./images/jegue.png","./audio/jegue.mp3");
-    addWord("JiBOIA",["JI","BOI","A"],"./images/jiboia.png","./audio/jiboia.mp3");
+    addWord("JIBOIA",["JI","BOI","A"],"./images/jiboia.png","./audio/jiboia.mp3");
     addWord("JILÓ",["JI","LÓ"],"./images/jilo.png","./audio/jilo.mp3");
     addWord("JIPE",["JI","PE"],"./images/jipe.png","./audio/jipe.mp3");
     addWord("JOANINHA",["JO","A","NI","NHA"],"./images/joaninha.png","./audio/joaninha.mp3");
@@ -704,6 +706,111 @@ const makeWords = (function () {
     addWord("LUSTRE",["LUS","TRE"],"./images/lustre.png","./audio/lustre.mp3");
     addWord("LUVAS",["LU","VAS"],"./images/luvas.png","./audio/luvas.mp3");
 
+    addWord("MAÇÃ",["MA","ÇÃ"],"./images/maca.png","./audio/maca.mp3");
+    addWord("MACACÃO",["MA","CA","CÃO"],"./images/macacao.png","./audio/macacao.mp3");
+    addWord("MACACO",["MA","CA","CO"],"./images/macaco.png","./audio/macaco.mp3");
+    addWord("MAÇANETA",["MA","ÇA","NE","TA"],"./images/macaneta.png","./audio/macaneta.mp3");
+    addWord("MACARRÃO",["MA","CAR","RÃO"],"./images/macarrao.png","./audio/macarrao.mp3");
+    addWord("MACHADO",["MACHADO"],"./images/machado.png","./audio/machado.mp3");
+    addWord("MACHUCADO",["MA","CHU","CA","DO"],"./images/machucado.png","./audio/machucado.mp3");
+    addWord("MADEIRA",["MA","DEI","RA"],"./images/madeira.png","./audio/madeira.mp3");
+    addWord("MADRASTA",["MA","DRAS","TA"],"./images/madrasta.png","./audio/madrasta.mp3");
+    addWord("MADRINHA",["MA","DRI","NHA"],"./images/madrinha.png","./audio/madrinha.mp3");
+    addWord("MÃE",["MÃE"],"./images/mae.png","./audio/mae.mp3");
+    addWord("MAESTRO",["MA","ES","TRO"],"./images/maestro.png","./audio/maestro.mp3");
+    addWord("MÁGICO",["MÁ","GI","CO"],"./images/magico.png","./audio/magico.mp3");
+    addWord("MAGMA",["MAG","MA"],"./images/magma.png","./audio/magma.mp3");
+    addWord("MALA",["MA","LA"],"./images/mala.png","./audio/mala.mp3");
+    addWord("MALABARISMO",["MA","LA","BA","RIS","MO"],"./images/malabarismo.png","./audio/malabarismo.mp3");
+    addWord("MAMÃO",["MA","MÃO"],"./images/mamao.png","./audio/mamao.mp3");
+    addWord("MAMUTE",["MA","MU","TE"],"./images/mamute.png","./audio/mamute.mp3");
+    addWord("MANCHA",["MAN","CHA"],"./images/mancha.png","./audio/mancha.mp3");
+    addWord("MANDIOCA",["MAN","DI","O","CA"],"./images/mandioca.png","./audio/mandioca.mp3");
+    addWord("MANEQUIM",["MA","NE","QUIM"],"./images/manequim.png","./audio/manequim.mp3");
+    addWord("MANGA",["MAN","GA"],"./images/manga.png","./audio/manga.mp3");
+    addWord("MANGUEIRA",["MAN","GUEI","RA"],"./images/mangueira.png","./audio/mangueira.mp3");
+    addWord("MANIVELA",["MA","NI","VE","LA"],"./images/manivela.png","./audio/manivela.mp3");
+    addWord("MANTEIGA",["MAN","TEI","GA"],"./images/manteiga.png","./audio/manteiga.mp3");
+    addWord("MÃO",["MÃO"],"./images/mao.png","./audio/mao.mp3");
+    addWord("MAPA",["MA","PA"],"./images/mapa.png","./audio/mapa.mp3");
+    addWord("MAQUIAGEM",["MA","QUI","A","GEM"],"./images/maquiagem.png","./audio/maquiagem.mp3");
+    addWord("MARACUJÁ",["MA","RA","CU","JÁ"],"./images/maracuja.png","./audio/maracuja.mp3");
+    addWord("MARINHEIRO",["MA","RI","NHEI","RO"],"./images/marinheiro.png","./audio/marinheiro.mp3");
+    addWord("MARTELO",["MAR","TE","LO"],"./images/martelo.png","./audio/martelo.mp3");
+    addWord("MÁSCARA",["MÁS","CA","RA"],"./images/mascara.png","./audio/mascara.mp3");
+    addWord("MASSA",["MAS","SA"],"./images/massa.png","./audio/massa.mp3");
+    addWord("MATERIAL",["MA","TE","RI","AL"],"./images/material.png","./audio/material.mp3");
+    addWord("MECÂNICO",["ME","CÂ","NI","CO"],"./images/mecanico.png","./audio/mecanico.mp3");
+    addWord("MEDALHA",["ME","DA","LHA"],"./images/medalha.png","./audio/medalha.mp3");
+    addWord("MÉDICO",["MÉ","DI","CO"],"./images/medico.png","./audio/medico.mp3");
+    addWord("MEDITAÇÃO",["ME","DI","TA","ÇÃO"],"./images/meditacao.png","./audio/meditacao.mp3");
+    addWord("MEGAFONE",["ME","GA","FO","NE"],"./images/megafone.png","./audio/megafone.mp3");
+    addWord("MEIAS",["MEI","AS"],"./images/meias.png","./audio/meias.mp3");
+    addWord("MELANCIA",["ME","LAN","CIA"],"./images/melancia.png","./audio/melancia.mp3");
+    addWord("MELÃO",["ME","LÃO"],"./images/melao.png","./audio/melao.mp3");
+    addWord("MENU",["ME","NU"],"./images/menu.png","./audio/menu.mp3");
+    addWord("MERCADO",["MER","CA","DO"],"./images/mercado.png","./audio/mercado.mp3");
+    addWord("MERGULHAR",["MER","GU","LHAR"],"./images/mergulhar.png","./audio/mergulhar.mp3");
+    addWord("MESA",["ME","SA"],"./images/mesa.png","./audio/mesa.mp3");
+    addWord("METAL",["ME","TAL"],"./images/metal.png","./audio/metal.mp3");
+    addWord("METEORO",["ME","TE","O","RO"],"./images/meteoro.png","./audio/meteoro.mp3");
+    addWord("METRÔ",["ME","TRÔ"],"./images/metro.png","./audio/metro.mp3");
+    addWord("MEXERICA",["ME","XE","RI","CA"],"./images/mexerica.png","./audio/mexerica.mp3");
+    addWord("MICO",["MI","CO"],"./images/mico.png","./audio/mico.mp3");
+    addWord("MICRÓBIO",["MI","CRÓ","BIO"],"./images/microbio.png","./audio/microbio.mp3");
+    addWord("MICROFONE",["MI","CRO","FO","NE"],"./images/microfone.png","./audio/microfone.mp3");
+    addWord("MIGALHA",["MI","GA","LHA"],"./images/migalha.png","./audio/migalha.mp3");
+    addWord("MILHO",["MI","LHO"],"./images/milho.png","./audio/milho.mp3");
+    addWord("MINEIRO",["MI","NEI","RO"],"./images/mineiro.png","./audio/mineiro.mp3");
+    addWord("MINHOCA",["MI","NHO","CA"],"./images/minhoca.png","./audio/minhoca.mp3");
+    addWord("MIOLO",["MI","O","LO"],"./images/miolo.png","./audio/miolo.mp3");
+    addWord("MOCHILA",["MO","CHI","LA"],"./images/mochila.png","./audio/mochila.mp3");
+    addWord("MOEDA",["MO","E","DA"],"./images/moeda.png","./audio/moeda.mp3");
+    addWord("MOFO",["MO","FO"],"./images/mofo.png","./audio/mofo.mp3");
+    addWord("MOINHO",["MO","I","NHO"],"./images/moinho.png","./audio/moinho.mp3");
+    addWord("MOLA",["MO","LA"],"./images/mola.png","./audio/mola.mp3");
+    addWord("MOLDE",["MOL","DE"],"./images/molde.png","./audio/molde.mp3");
+    addWord("MOLDURA",["MOL","DU","RA"],"./images/moldura.png","./audio/moldura.mp3");
+    addWord("MOLETOM",["MO","LE","TOM"],"./images/moletom.png","./audio/moletom.mp3");
+    addWord("MONGE",["MON","GE"],"./images/monge.png","./audio/monge.mp3");
+    addWord("MONITOR",["MO","NI","TOR"],"./images/monitor.png","./audio/monitor.mp3");
+    addWord("MONSTRO",["MONS","TRO"],"./images/monstro.png","./audio/monstro.mp3");
+    addWord("MONTANHA",["MON","TA","NHA"],"./images/montanha.png","./audio/montanha.mp3");
+    addWord("MORANGO",["MO","RAN","GO"],"./images/morango.png","./audio/morango.mp3");
+    addWord("MORCEGO",["MOR","CE","GO"],"./images/morcego.png","./audio/morcego.mp3");
+    addWord("MORTADELA",["MOR","TA","DE","LA"],"./images/mortadela.png","./audio/mortadela.mp3");
+    addWord("MOSAICO",["MO","SAI","CO"],"./images/mosaico.png","./audio/mosaico.mp3");
+    addWord("MOSCA",["MOSCA"],"./images/mosca.png","./audio/mosca.mp3");
+    addWord("MOTOCICLETA",["MO","TO","CI","CLE","TA"],"./images/motocicleta.png","./audio/motocicleta.mp3");
+    addWord("MUDA",["MU","DA"],"./images/muda.png","./audio/muda.mp3");
+    addWord("MULETA",["MU","LE","TA"],"./images/muleta.png","./audio/muleta.mp3");
+    addWord("MULHER",["MU","LHER"],"./images/mulher.png","./audio/mulher.mp3");
+    addWord("MÚMIA",["MÚ","MIA"],"./images/mumia.png","./audio/mumia.mp3");
+    addWord("MUNDO",["MUN","DO"],"./images/mundo.png","./audio/mundo.mp3");
+    addWord("MURALHA",["MU","RA","LHA"],"./images/muralha.png","./audio/muralha.mp3");
+    addWord("MURO",["MU","RO"],"./images/muro.png","./audio/muro.mp3");
+    addWord("MÚSCULO",["MÚS","CU","LO"],"./images/musculo.png","./audio/musculo.mp3");
+    addWord("MUSEU",["MU","SEU"],"./images/museu.png","./audio/museu.mp3");
+    addWord("MÚSICA",["MÚ","SI","CA"],"./images/musica.png","./audio/musica.mp3");
+
+    addWord("NADADOR",["NA","DA","DOR"],"./images/nadador.png","./audio/nadador.mp3");
+    addWord("NARIZ",["NA","RIZ"],"./images/nariz.png","./audio/nariz.mp3");
+    addWord("NATAL",["NA","TAL"],"./images/natal.png","./audio/natal.mp3");
+    addWord("NATUREZA",["NA","TU","RE","ZA"],"./images/natureza.png","./audio/natureza.mp3");
+    addWord("NAVE",["NA","VE"],"./images/nave.png","./audio/nave.mp3");
+    addWord("NAVIO",["NA","VIO"],"./images/navio.png","./audio/navio.mp3");
+    addWord("NEBLINA",["NE","BLI","NA"],"./images/neblina.png","./audio/neblina.mp3");
+    addWord("NENÉM",["NE","NÉM"],"./images/nenem.png","./audio/nenem.mp3");
+    addWord("NETO",["NE","TO"],"./images/neto.png","./audio/neto.mp3");
+    addWord("NETUNO",["NE","TU","NO"],"./images/netuno.png","./audio/netuno.mp3");
+    addWord("NEVE",["NE","VE"],"./images/neve.png","./audio/neve.mp3");
+    addWord("NINHO",["NI","NHO"],"./images/ninho.png","./audio/ninho.mp3");
+    addWord("NINJA",["NIN","JA"],"./images/ninja.png","./audio/ninja.mp3");
+    addWord("NOITE",["NOI","TE"],"./images/noite.png","./audio/noite.mp3");
+    addWord("NOVELO",["NO","VE","LO"],"./images/novelo.png","./audio/novelo.mp3");
+    addWord("NÚMEROS",["NÚ","ME","ROS"],"./images/numeros.png","./audio/numeros.mp3");
+    addWord("NUVEM",["NU","VEM"],"./images/nuvem.png","./audio/nuvem.mp3");
+    
     addWord("",[""],"./images/.png","./audio/.mp3");
 */
     
@@ -788,9 +895,11 @@ const makeForm = (function () {
         addButton("Consoante + H", removeSelection);
         addButton("Consoante + L", removeSelection);
         addButton("Consoante + R", removeSelection);
+        addButton("GU + E/I", removeSelection);
         addButton("SS", removeSelection);
         addButton("Ç", removeSelection);
         addButton("Acentuação", removeSelection);
+        addButton("Silabas com 3 letras", removeSelection);
     })();
 
     const makeInfo = () => {
@@ -883,6 +992,18 @@ const gameController = () => {
                 value.word.indexOf("É") == -1 && value.word.indexOf("Í") == -1 && value.word.indexOf("Ó") == -1 &&
                 value.word.indexOf("Ú") == -1;
         }
+        const removeGu = (value) => {
+            return value.word.indexOf("GUE") == -1 && value.word.indexOf("GUI") == -1;
+        }
+
+        const remove3Letter = (value) => {
+            for (let i = 0; i < value.syllables.length; i++) {
+                if (value.syllables[i].length > 2) {
+                    return false;
+                }
+            }
+            return true;
+        }
 
         for (let i = 0; i < wordsToRemove.length; i++) {
             if (wordsToRemove[i] == "Consoante + H") {
@@ -897,6 +1018,10 @@ const gameController = () => {
                 allWords = allWords.filter(removeC);
             } else if (wordsToRemove[i] == "Acentuação") {
                 allWords = allWords.filter(removeAccents);
+            } else if (wordsToRemove[i] == "GU + E/I") {
+                allWords = allWords.filter(removeGu);
+            } else if (wordsToRemove[i] == "Silabas com 3 letras") {
+                allWords = allWords.filter(remove3Letter);
             }
         }
     })();
